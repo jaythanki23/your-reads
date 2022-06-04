@@ -1,16 +1,16 @@
 import mongoose from "mongoose";
+import colors from 'colors';
 import { ConnectOptions } from "mongoose";
 
 const connectDB = async () => {
-  console.log(process.env["MONGO_URI"])
   try {
-    const conn = await mongoose.connect(process.env.MONGO_URI as string, {
+    const conn = await mongoose.connect(process.env.MONGO_URI!, {
       useNewUrlParser: true,
         // useCreateIndex: true,
       useUnifiedTopology: true
     } as ConnectOptions);
 
-    console.log(`MongoDB connected: ${conn.connection.host}`.cyan.underline);
+    console.log(colors.cyan.underline(`MongoDB connect: ${conn.connection.host}`));
   } catch (err) {
     console.log(err);
     process.exit(1);
