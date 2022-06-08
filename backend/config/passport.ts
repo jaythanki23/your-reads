@@ -4,6 +4,7 @@ import { PassportStatic } from 'passport';
 import { Profile, VerifyCallback } from 'passport-google-oauth20';
 
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
+console.log(GoogleStrategy);
 
 module.exports = function(passport: PassportStatic) {
   passport.use(new GoogleStrategy({
