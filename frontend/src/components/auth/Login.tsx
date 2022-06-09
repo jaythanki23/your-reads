@@ -5,6 +5,7 @@ import axios from 'axios';
 const Login = () => {
 
   const onGoogle = async () => {
+    axios.create({ withCredentials: true});
     const res = await axios.get('/auth/google');
   }
   
