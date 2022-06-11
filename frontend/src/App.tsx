@@ -1,6 +1,7 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { GoogleOAuthProvider } from '@react-oauth/google';
+import AuthState from './context/AuthState';
 import Login from './components/auth/Login';
 import Home from './Home';
 
@@ -13,12 +14,14 @@ const App = () => {
   return (
     <div className="App">
       <GoogleOAuthProvider clientId={CLIENTID}>
-        <Router>
-          <Routes>
-            <Route path='/' element={<Login />} />
-            <Route path='/home' element={<Home />} />
-          </Routes>
-        </Router>
+        <AuthState>
+          <Router>
+            <Routes>
+              <Route path='/' element={<Login />} />
+              <Route path='/home' element={<Home />} />
+            </Routes>
+          </Router>
+        </AuthState>
       </GoogleOAuthProvider>
     </div>
   );

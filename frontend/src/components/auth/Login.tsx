@@ -1,22 +1,29 @@
-import React from 'react';
-import axios from 'axios';
+import React, { useContext } from 'react';
+import jwtDecode from 'jwt-decode';
 import { GoogleLogin } from '@react-oauth/google';
+import { useNavigate } from 'react-router-dom';
+import { authContext as AuthContext } from '../../context/authContext';
 
+import { RegisterData } from '../../types/dataTypes';
 
 const Login = () => {
 
-  // const onGoogle = async () => {
-  //   axios.create({ withCredentials: true});
-  //   const res = await axios.get('/auth/google');
-  // }
+  const { register } = useContext(AuthContext);
+  const navigate = useNavigate();
 
-  // const googleSucess = async (res: GoogleLoginResponse | GoogleLoginResponseOffline) => {
-  //   console.log(res);
-  // };
+  const googleSuccess = async (credentialResponse: any) => {
+    // console.log(jwtDecode(credentialResponse.credential as string));
+    const userObj: any = jwtDecode(credentialResponse.credential as string);
+    const data: RegisterData = {
+      name: userObj.name,
+      email: userObj.email,
+      image: userObj.picture
+    }
 
-  // const googleFailure = (error: any) => {
-  //   console.log(error);
-  // };
+    register?.(data);
+
+    navigate('/home');
+  }
   
   return (
     <div>
@@ -30,17 +37,7 @@ const Login = () => {
                   <p className='fs-5'>Pick, organize, and mark your reads.</p>
                   <hr />
                   <GoogleLogin 
-                    onSuccess={async (credentialResponse) => {
-                      const accessToken = credentialResponse.credential;
-                      let config = {
-                        headers: {
-                          Authorization: `Bearer ${accessToken}`
-                        }
-                      }
-                      const res = await axios.get("https://people.googleapis.com/v1/people/me?personFields=names HTTP/1.1", config);
-                      console.log(res);
-                      // console.log(credentialResponse);
-                    }}
+                    onSuccess={googleSuccess}
                     onError={() => {
                       console.log('Login Failed');
                     }}
