@@ -10,9 +10,6 @@ import { router as auth } from './routes/auth';
 // Load Config
 dotenv.config();
 
-// passport config
-require('./config/passport')(passport);
-
 const app: Express = express();
 
 connectDB();
@@ -22,18 +19,6 @@ const PORT = process.env.PORT;
 app.use(cors());
 
 app.use('/auth', auth);
-
-// Sessions
-app.use(session({
-  secret: 'keyboard cat',
-  resave: false,
-  saveUninitialized: false
-}))
-
-// Passport middleware
-app.use(passport.initialize());
-app.use(passport.session());
-
 
 app.listen(PORT, () => console.log(colors.yellow(`Server running on port ${PORT}`)));
 
