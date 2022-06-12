@@ -3,11 +3,16 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 import AuthState from './context/AuthState';
 import Login from './components/auth/Login';
-import Home from './Home';
+import Home from './components/Home';
+import setAuthToken from './utils/setAuthToken';
 
 import './App.css';
 
 const CLIENTID = "918908597696-fu9rsapoqiih191od2j4ignlsg5v3ef2.apps.googleusercontent.com";
+
+if(localStorage.token) {
+  setAuthToken(localStorage.token);
+}
 
 const App = () => {
   

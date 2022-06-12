@@ -1,19 +1,19 @@
 import mongoose from "mongoose";
 
 const UserSchema = new mongoose.Schema({
-  googleId: {
+  name: {
     type: String,
     required: true
   },
-  displayName: {
+  email: {
     type: String,
     required: true
   },
-  firstName: {
+  givenName: {
     type: String,
     required: true
   },
-  lastName: {
+  familyName: {
     type: String,
     required: true
   },

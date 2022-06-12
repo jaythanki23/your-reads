@@ -14,15 +14,18 @@ const Login = () => {
   const googleSuccess = async (credentialResponse: any) => {
     // console.log(jwtDecode(credentialResponse.credential as string));
     const userObj: any = jwtDecode(credentialResponse.credential as string);
+    // console.log(userObj);
     const data: RegisterData = {
       name: userObj.name,
       email: userObj.email,
-      image: userObj.picture
+      image: userObj.picture,
+      givenName: userObj.given_name,
+      familyName: userObj.family_name
     }
 
     register?.(data);
 
-    navigate('/home');
+    // navigate('/home');
   }
   
   return (
@@ -31,17 +34,19 @@ const Login = () => {
         <div className="container h-100">
           <div className="row d-flex justify-content-center align-items-center h-100">
             <div className="col-12 col-md-9 col-lg-7 col-xl-6">
-              <div className="card shadow-sm" style={{"borderRadius": "5px", "height": "30rem"}}>
+              <div className="card shadow-sm" style={{"borderRadius": "5px", "height": "20rem"}}>
                 <div className="card-body p-5">
                   <h1 className="text-center mb-3"><i className="bi bi-book" style={{"marginRight": "10px"}}></i>Your reads</h1>
                   <p className='fs-5'>Pick, organize, and mark your reads.</p>
                   <hr />
-                  <GoogleLogin 
-                    onSuccess={googleSuccess}
-                    onError={() => {
-                      console.log('Login Failed');
-                    }}
-                  />
+                  <div className='d-flex justify-content-center mt-5'>
+                    <GoogleLogin 
+                      onSuccess={googleSuccess}
+                      onError={() => {
+                        console.log('Login Failed');
+                      }}
+                    />
+                  </div>
                   {/* <button className="btn btn-primary btn-lg btn-block mt-4" onClick={onGoogle}><i className="bi bi-google" style={{"marginRight": "10px"}}></i>Log In With Google</button> */}
                 </div>
               </div>

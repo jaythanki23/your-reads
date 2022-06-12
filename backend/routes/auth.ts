@@ -1,18 +1,12 @@
 import express from "express";
-import passport from "passport";
+import { auth, getMe } from "../controller/auth";
+import protect from "../middleware/authMiddleware";
 
 const router = express.Router();
+ 
+router.post('/google', auth);
 
-// @desc    Auth with Google
-// @route   GET /auth/google 
-router.get('/google', passport.authenticate("google", { scope: ['profile'] } ))
+router.get('/me', protect, getMe);
 
-// @desc    Google auth callback
-// @route   GET /auth/google/callback 
-router.get('/google/callback', passport.authenticate("google", { failureRedirect: '/',  }), 
-  (req, res) => {
-    res.redirect('http://localhost:3000/home');
-  }
-);
 
 export { router };

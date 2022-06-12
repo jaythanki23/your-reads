@@ -11,6 +11,7 @@ export interface StateType {
   loading?: boolean | null | undefined,
   //methods
   register?: (data: RegisterData) => void
+  loadUser?: () => void
 }
 
 export const initialState: StateType = {
