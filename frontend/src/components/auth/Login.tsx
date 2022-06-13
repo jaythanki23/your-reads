@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import jwtDecode from 'jwt-decode';
 import { GoogleLogin } from '@react-oauth/google';
 import { useNavigate } from 'react-router-dom';
@@ -8,8 +8,14 @@ import { RegisterData } from '../../types/dataTypes';
 
 const Login = () => {
 
-  const { register } = useContext(AuthContext);
+  const { register, error, isAuthenticated } = useContext(AuthContext);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if(isAuthenticated) {
+      navigate('/home');
+    }
+  }, [isAuthenticated, navigate]);
 
   const googleSuccess = async (credentialResponse: any) => {
     // console.log(jwtDecode(credentialResponse.credential as string));
@@ -24,12 +30,14 @@ const Login = () => {
     }
 
     register?.(data);
-
-    // navigate('/home');
   }
   
   return (
     <div>
+      {error && <div className="alert alert-danger m-2 p-2" role="alert">
+                  {error}
+                </div>
+      }
       <section className="vh-100">
         <div className="container h-100">
           <div className="row d-flex justify-content-center align-items-center h-100">

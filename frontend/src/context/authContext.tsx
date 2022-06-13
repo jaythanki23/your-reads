@@ -9,6 +9,7 @@ export interface StateType {
   image?: string | null | undefined,
   isAuthenticated?: boolean | null | undefined,
   loading?: boolean | null | undefined,
+  error?: string | null | undefined
   //methods
   register?: (data: RegisterData) => void
   loadUser?: () => void
@@ -22,6 +23,7 @@ export const initialState: StateType = {
   image: '',
   isAuthenticated: false,
   loading: true,
+  error: ''
 }
 
 export const authContext = createContext(initialState);

@@ -21,12 +21,12 @@ const protect = async (req: any, res: Response, next: NextFunction) => {
     } catch (error) {
       console.log(error);
       res.status(401).json({
-        message: 'Not authorized'
+        error: 'Not authorized'
       });
     }
   } else {
     res.status(401).json({
-      message: 'Not authorized'
+      error: 'No token. Not authorized'
     });
   }
 }

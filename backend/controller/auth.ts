@@ -10,7 +10,7 @@ const auth = async (req: Request, res: Response) => {
 
   if(!name || !email || !image || !givenName || !familyName) {
     res.status(400).json({
-      message: "Please add all the fields"
+      error: "Please add all the fields"
     });
     // throw new Error("Please add all the fields");
   }
@@ -38,7 +38,7 @@ const auth = async (req: Request, res: Response) => {
       })
     } else {
       res.status(400).json({
-        message: "Invalid user data"
+        error: "Invalid user data"
       });
       // throw new Error("Invalid user data");
     }
@@ -53,6 +53,7 @@ const getMe = async (req: any, res: Response) => {
     id: req.user._id,
     name: req.user.name,
     email: req.user.email,
+    image: req.user.image
   }) 
 };
 

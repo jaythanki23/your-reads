@@ -1,5 +1,5 @@
 import { StateType } from "./authContext";
-import { REGISTER_SUCCESS, USER_LOADED } from '../types/reducerTypes';
+import { REGISTER_FAIL, REGISTER_SUCCESS, USER_LOADED, USER_NOT_LOADED } from '../types/reducerTypes';
 
 interface Action {
   type: string,
@@ -14,16 +14,32 @@ const authReducer = (state: StateType, action: Action): StateType => {
       localStorage.setItem('token', payload.token as string);
       return {
         ...state,
-        isAuthenticated: true
+        isAuthenticated: true,
+        token: payload.token
       }
     case USER_LOADED:
       return  {
         ...state,
+        id: payload.id,
+        token: localStorage.token,
         name: payload.name,
         email: payload.email,
         image: payload.image,
         isAuthenticated: true,
         loading: false
+      }
+    case REGISTER_FAIL:
+    case USER_NOT_LOADED:
+      localStorage.removeItem('token');
+      return {
+        ...state,
+        name: '',
+        email: '',
+        image: '',
+        token: '',
+        isAuthenticated: false,
+        loading: false,
+        error: payload.error
       }
     default:
       return state;
