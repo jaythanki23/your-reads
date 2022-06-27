@@ -2,11 +2,11 @@ import { useContext, useReducer } from "react";
 import axios from "axios";
 import { authContext as AuthContext } from "./authContext";
 import authReducer from "./authReducer";
-import setAuthToken from "../utils/setAuthToken";
-import { REGISTER_SUCCESS, REGISTER_FAIL, USER_LOADED, USER_NOT_LOADED } from "../types/reducerTypes";
+import setAuthToken from "../../utils/setAuthToken";
+import { REGISTER_SUCCESS, REGISTER_FAIL, USER_LOADED, USER_NOT_LOADED, LOGOUT } from "../../types/reducerTypes";
 
 import { initialState } from "./authContext";
-import { RegisterData } from "../types/dataTypes"
+import { RegisterData } from "../../types/dataTypes"
 
 interface ProviderProps {
   children: React.ReactNode
@@ -16,7 +16,7 @@ const AuthState = (props: ProviderProps) => {
   
   const [state, dispatch] = useReducer(authReducer, initialState);
 
-  // Register user
+  // Register/Login user
   const register = async (data: RegisterData) => {
     const config = {
       headers: {
@@ -39,6 +39,9 @@ const AuthState = (props: ProviderProps) => {
       })
     }
   }
+
+  // Logout user
+  const logout = () => { dispatch({ type: LOGOUT }) };
 
   // Load user
   const loadUser = async () => {
@@ -72,6 +75,7 @@ const AuthState = (props: ProviderProps) => {
               loading: state.loading,
               error: state.error,
               register,
+              logout,
               loadUser
             }}
           >

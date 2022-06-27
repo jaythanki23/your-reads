@@ -1,5 +1,5 @@
 import { createContext } from "react";
-import { RegisterData } from "../types/dataTypes";
+import { RegisterData } from "../../types/dataTypes";
 
 export interface StateType {
   id?: string | null | undefined,
@@ -9,9 +9,10 @@ export interface StateType {
   image?: string | null | undefined,
   isAuthenticated?: boolean | null | undefined,
   loading?: boolean | null | undefined,
-  error?: string | null | undefined
+  error?: string | null | undefined,
   //methods
-  register?: (data: RegisterData) => void
+  register?: (data: RegisterData) => void,
+  logout?: () => void,
   loadUser?: () => void
 }
 

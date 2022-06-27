@@ -1,9 +1,10 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { GoogleOAuthProvider } from '@react-oauth/google';
-import AuthState from './context/AuthState';
+import AuthState from './context/auth/AuthState';
 import Login from './components/auth/Login';
 import Home from './components/Home';
+import Navbar from './layout/Navbar';
 import setAuthToken from './utils/setAuthToken';
 
 import './App.css';
@@ -21,6 +22,7 @@ const App = () => {
       <GoogleOAuthProvider clientId={CLIENTID}>
         <AuthState>
           <Router>
+            <Navbar />
             <Routes>
               <Route path='/' element={<Login />} />
               <Route path='/home' element={<Home />} />

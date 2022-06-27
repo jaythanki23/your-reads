@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from 'react';
-import { authContext as AuthContext } from '../context/authContext';
+import { authContext as AuthContext } from '../context/auth/authContext';
 import Spinner from '../layout/Spinner';
 
 const Home = () => {
@@ -16,12 +16,11 @@ const Home = () => {
                 </div>
       }
       {!loading ? <>
-                    <div className='fs-1'>Home</div>
-                    <div>
-                      <div className='fs-1'>{name}</div>
-                      <div className='fs-1'>{email}</div>
-                      <img src={image as string} alt='profile pic' referrerPolicy="no-referrer" />
-                    </div>
+                    <form className="row g-5">
+                      <div className="col-auto mx-4">
+                        <input type="text" className="form-control"/>
+                      </div>
+                    </form>  
                   </> : 
                   <Spinner />
       }

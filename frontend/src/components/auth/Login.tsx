@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from 'react';
 import jwtDecode from 'jwt-decode';
 import { GoogleLogin } from '@react-oauth/google';
 import { useNavigate } from 'react-router-dom';
-import { authContext as AuthContext } from '../../context/authContext';
+import { authContext as AuthContext } from '../../context/auth/authContext';
 
 import { RegisterData } from '../../types/dataTypes';
 
