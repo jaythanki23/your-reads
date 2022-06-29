@@ -15,13 +15,18 @@ const Home = () => {
                   {error}
                 </div>
       }
-      {!loading ? <>
-                    <form className="row g-5">
-                      <div className="col-auto mx-4">
-                        <input type="text" className="form-control"/>
+      {!loading ? <div className='vh-100 d-flex flex-column align-items-center mt-5 p-5 gap-3'>
+                    <p className='fs-1' style={{'fontFamily': 'cursive'}}>Your Reads</p>
+                    {/* <div className="row">
+                      <div className="col">
+                        <input type="text" className="form-control form-control-lg w-50" placeholder="First name" aria-label="First name" />
                       </div>
-                    </form>  
-                  </> : 
+                    </div>  */}
+                    <input type="text" className="form-control form-control-lg w-25 rounded" placeholder="Search" aria-label="Search" />
+                    <div>
+                    
+                    </div> 
+                  </div> : 
                   <Spinner />
       }
     </div>
