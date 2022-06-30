@@ -1,7 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
-import { authContext as AuthContext } from '../context/auth/authContext';
-import Spinner from '../layout/Spinner';
+import { authContext as AuthContext } from '../../context/auth/authContext';
+import Spinner from '../../layout/Spinner';
+import Books from './Books';
 
 
 const Home = () => {
@@ -14,18 +15,10 @@ const Home = () => {
   }
 
   const onEnter = async (e: React.KeyboardEvent<HTMLInputElement>) => {
-    try {
-      if(e.key === "Enter") {
-        const res = await axios.get(`https://www.googleapis.com/books/v1/volumes?q=${text}&key=AIzaSyCnTg4_7m77emd1bLe_a922zjU_7bwGK98`, {transformRequest: (data: any, headers: any) => {
-          delete headers.common['Authorization'];
-          return data;
-        }
-      });
-      console.log(res.data.items);
-      }      
-    } catch (error) {
-      console.log(error);
-    }
+    
+    if(e.key === "Enter") {
+        // call search
+    }      
     
   }
 
@@ -45,6 +38,7 @@ const Home = () => {
                       <input type="text" className="form-control form-control-lg w-25 rounded" placeholder="Search" aria-label="Search" onChange={onChange} onKeyDown={onEnter} />
                       {/* <button type='button' className='btn btn-primary'}><i className="bi bi-search"></i></button> */}
                     </div>
+                    <Books />
                   </div> : 
                   <Spinner />
       }

@@ -7,10 +7,7 @@ import { REGISTER_SUCCESS, REGISTER_FAIL, USER_LOADED, USER_NOT_LOADED, LOGOUT }
 
 import { initialState } from "./authContext";
 import { RegisterData } from "../../types/dataTypes"
-
-interface ProviderProps {
-  children: React.ReactNode
-}
+import { ProviderProps } from "../../types/dataTypes";
 
 const AuthState = (props: ProviderProps) => {
   

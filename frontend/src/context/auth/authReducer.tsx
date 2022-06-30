@@ -1,4 +1,4 @@
-import { StateType } from './authContext';
+import { StateType } from '../../types/dataTypes';
 import { REGISTER_FAIL, REGISTER_SUCCESS, USER_LOADED, USER_NOT_LOADED, LOGOUT } from '../../types/reducerTypes';
 
 interface Action {
