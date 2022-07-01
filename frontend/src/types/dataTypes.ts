@@ -33,9 +33,12 @@ export interface bookInfo {
   image?: string | null | undefined,
   description?: string | null | undefined,
   pages?: number | null | undefined,
+  publishedDate?: string | null | undefined
 };
 
 export interface bookStateType {
-  info?: bookInfo,
-  error?: string
+  info?: bookInfo[],
+  error?: string,
+  //methods
+  search?: (text: string) => void
 }

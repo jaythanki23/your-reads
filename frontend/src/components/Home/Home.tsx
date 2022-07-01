@@ -1,12 +1,15 @@
 import React, { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 import { authContext as AuthContext } from '../../context/auth/authContext';
+import { bookInfo } from '../../types/dataTypes';
 import Spinner from '../../layout/Spinner';
 import Books from './Books';
+import { bookContext } from '../../context/book/bookContext';
 
 
 const Home = () => {
   const { name, email, image, error, loading, loadUser } = useContext(AuthContext);
+  const { search } = useContext(bookContext);
 
   const [text, setText] = useState<string>('');
 
@@ -18,6 +21,8 @@ const Home = () => {
     
     if(e.key === "Enter") {
         // call search
+        // console.log(text);
+        search?.(text);
     }      
     
   }

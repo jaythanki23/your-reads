@@ -2,7 +2,7 @@ import { createContext } from "react";
 import { bookStateType } from "../../types/dataTypes";
 
 export const initialState: bookStateType = {
-  info: {},
+  info: [],
   error: ''
 };
 

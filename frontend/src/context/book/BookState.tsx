@@ -3,7 +3,10 @@ import axios from "axios";
 import { bookContext as BookContext } from "./bookContext";
 import bookReducer from "./bookReducer";
 import { initialState } from "./bookContext";
-import { ProviderProps } from "../../types/dataTypes";
+import { bookStateType, ProviderProps } from "../../types/dataTypes";
+import { bookInfo } from "../../types/dataTypes";
+
+import { DISPLAY } from "../../types/reducerTypes";
 
 const BookState = (props: ProviderProps) => {
   const [state, dispatch] = useReducer(bookReducer, initialState);
@@ -16,12 +19,36 @@ const BookState = (props: ProviderProps) => {
           return data;
         }
       });
-      
-      //const {  } =
 
+      const result: bookInfo[] = res.data.items.map((x: any) => {
+        const obj: bookInfo = {
+          id: x.id,
+          title: x.volumeInfo.title,
+          authors: x.volumeInfo.authors,
+          categories: x.volumeInfo.categories,
+          description: x.volumeInfo.description,
+          image: x.volumeInfo.imageLinks.thumbnail,
+          pages: x.volumeInfo.pageCount,
+          publishedDate: x.volumeInfo.publishedDate                        
+        };
+        return obj;
+      });
+
+      console.log(result);
+
+      const resultObj: bookStateType = {
+        info: result
+      }
+
+      // console.log(resultObj);
+
+      dispatch({
+        type: DISPLAY,
+        payload: resultObj
+      })
 
     } catch (error) {
-      //error
+      console.log(error);
     }
   }
   
@@ -29,7 +56,8 @@ const BookState = (props: ProviderProps) => {
   return <BookContext.Provider 
           value={{
             info: state.info,
-            error: state.error
+            error: state.error,
+            search
           }}
         >
           {props.children}

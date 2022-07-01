@@ -1,13 +1,22 @@
-import React from 'react'
+import React from 'react';
+import { bookInfo } from '../../types/dataTypes';
 
-const Card = () => {
+interface Props {
+  book: bookInfo
+}
+
+const Card = ({ book }: Props) => {
   return (
-    <div className="card" style={{"width": "18rem"}}>
-      <img src="..." className="card-img-top" alt="..." />
-      <div className="card-body">
-        <h5 className="card-title">Card title</h5>
-        <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        <a href="#" className="btn btn-primary">Go somewhere</a>
+    <div className="card border-secondary hoverable" style={{"width": "225px"}}>
+      <img src={book.image as string} className="card-img-top hoverable" alt="book cover" style={{"width": "225px", "height": "225px"}} />
+      <div className="card-body p-2 mt-2">
+        <h5 className="card-title">{book.title}</h5>
+        {/* <p className="card-text">{book.description}</p> */}
+        {/* <p className="card-text">{book.authors}</p>
+        <p className="card-text">{book.categories}</p>
+        <p className="card-text">{book.publishedDate}</p>
+        <p className="card-text">{book.pages}</p> */}
+        {/* <a href="#" className="btn btn-primary">Go somewhere</a> */}
       </div>
     </div>
   )
