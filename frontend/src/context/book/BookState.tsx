@@ -14,7 +14,7 @@ const BookState = (props: ProviderProps) => {
   // Get search results
   const search = async (text: string) => {
     try {
-      const res = await axios.get(`https://www.googleapis.com/books/v1/volumes?q=${text}&key=AIzaSyCnTg4_7m77emd1bLe_a922zjU_7bwGK98`, {transformRequest: (data: any, headers: any) => {
+      const res = await axios.get(`https://www.googleapis.com/books/v1/volumes?q=${text}&maxResults=25&key=AIzaSyCnTg4_7m77emd1bLe_a922zjU_7bwGK98`, {transformRequest: (data: any, headers: any) => {
           delete headers.common['Authorization'];
           return data;
         }
@@ -27,7 +27,7 @@ const BookState = (props: ProviderProps) => {
           authors: x.volumeInfo.authors,
           categories: x.volumeInfo.categories,
           description: x.volumeInfo.description,
-          image: x.volumeInfo.imageLinks.thumbnail,
+          image: x.volumeInfo.imageLinks?.thumbnail,
           pages: x.volumeInfo.pageCount,
           publishedDate: x.volumeInfo.publishedDate                        
         };
