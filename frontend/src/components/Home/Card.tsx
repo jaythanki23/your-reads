@@ -13,7 +13,7 @@ const Card = ({ book }: Props) => {
   
   return (
     <div>
-      <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">
+      <button type="button" data-bs-toggle="modal" data-bs-target={`#${book.id as string}`} id={`#${book.id as string}`}>
         <div className="card border-secondary" style={{"width": "225px"}}>
           <img src={book.image as string} className="card-img-top" alt="book cover" style={{"width": "225px", "height": "225px"}} />
           <div className="card-body p-2 mt-2">
@@ -28,8 +28,8 @@ const Card = ({ book }: Props) => {
         </div>
       </button>
       
-      <div className="modal" id="exampleModalCenter" tabIndex={-1} role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div className="modal-dialog modal-dialog-centered" role="document">
+      <div className="modal" id={book.id as string} tabIndex={-1} role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div className="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg" role="document">
           <div className="modal-content">
             <div className="modal-header">
               <h5 className="modal-title" id="exampleModalLongTitle">{book.title}</h5>
@@ -38,11 +38,31 @@ const Card = ({ book }: Props) => {
               </button>
             </div>
             <div className="modal-body">
-              ...
+              <div className='container-fluid'>
+                <div className='row'>
+                  <div className='col-md-4'>
+                    <img src={book.image as string} className="card-img-top" alt="book cover" style={{"width": "200px", "height": "200px"}} />
+                  </div>
+                  <div className='col-md-7 ms-auto text-start'>
+                    <p><span className='fw-bold'>Author(s):</span> {book.authors}</p>
+                    <p><span className='fw-bold'>Published Date:</span> {book.publishedDate}</p>
+                    <p><span className='fw-bold'>Category:</span> {book.categories}</p>
+                    <p><span className='fw-bold'>Page Count:</span> {book.pages}</p>
+                  </div>
+                </div>
+                <div className='row'>
+                  <p className='fw-bold text-start mt-4'>Description:</p>
+                  <p className='mt-1' style={{"textAlign": "justify", "textJustify": "inter-word"}}>
+                    {book.description}
+                  </p>
+                </div>
+              </div>
             </div>
             <div className="modal-footer">
               <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="button" className="btn btn-primary">Save changes</button>
+              <button type="button" className="btn btn-primary">Start Reading</button>
+              <button type="button" className="btn btn-primary">Want to Read</button>
+              <button type="button" className="btn btn-primary">Read</button>
             </div>
           </div>
         </div>
