@@ -1,9 +1,16 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { authContext as AuthContext } from '../context/auth/authContext';
+import { bookContext } from '../context/book/bookContext';
 
 const Navbar = () => {
   const { isAuthenticated, name, image, logout } = useContext(AuthContext);
+  const { clear } = useContext(bookContext);
+
+  const onLogout = () => {
+    clear?.();
+    logout?.();
+  }
 
   const guestLinks = (
     <>
@@ -16,7 +23,7 @@ const Navbar = () => {
   const authLinks = (
     <>
       <li className='nav-item'>
-        <a href='#' className='nav-link fw-bold' onClick={() => logout?.()} style={{'color': 'black'}} ><span>Logout</span></a>
+        <a href='#' className='nav-link fw-bold' onClick={onLogout} style={{'color': 'black'}} ><span>Logout</span></a>
       </li>
     </>
   )

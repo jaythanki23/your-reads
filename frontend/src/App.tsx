@@ -6,6 +6,7 @@ import BookState from './context/book/BookState';
 import Login from './components/auth/Login';
 import Home from './components/Home/Home';
 import Navbar from './layout/Navbar';
+import PrivateRoute from './routing/PrivateRoute';
 import setAuthToken from './utils/setAuthToken';
 
 import './App.css';
@@ -27,7 +28,10 @@ const App = () => {
               <Navbar />
               <Routes>
                 <Route path='/' element={<Login />} />
-                <Route path='/home' element={<Home />} />
+                <Route path='/home' element={<PrivateRoute>
+                                              <Home />
+                                            </PrivateRoute>} 
+                />
               </Routes>
             </Router>
           </BookState>

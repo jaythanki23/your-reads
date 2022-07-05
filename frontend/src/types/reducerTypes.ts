@@ -9,3 +9,4 @@ export const USER_NOT_LOADED = 'USER_NOT_LOADED';
 
 // Books
 export const DISPLAY = 'DISPLAY';
+export const CLEAR_DISPLAY = 'CLEAR_DISPLAY';

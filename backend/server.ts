@@ -5,6 +5,7 @@ import cors from 'cors';
 import { connectDB } from './config/db';
 import { router as auth } from './routes/auth';
 import { errorHandler } from './middleware/errorMiddleware';
+import { router as read } from './routes/books';
 
 // Load Config
 dotenv.config();
@@ -22,6 +23,7 @@ const PORT = process.env.PORT;
 app.use(cors());
 
 app.use('/auth', auth);
+app.use('/books', read);
 
 // Error handler
 app.use(errorHandler);

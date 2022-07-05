@@ -1,5 +1,5 @@
 import { bookStateType } from "../../types/dataTypes";
-import { DISPLAY } from "../../types/reducerTypes";
+import { DISPLAY, CLEAR_DISPLAY } from "../../types/reducerTypes";
 
 interface Action {
   type: string,
@@ -12,7 +12,12 @@ const bookReducer = (state: bookStateType, action: Action): bookStateType => {
     case DISPLAY:
       return {
         ...state,
-        info: payload?.info
+        display: payload?.display
+      }
+    case CLEAR_DISPLAY:
+      return {
+        ...state,
+        display: []
       }
     default:
       return state;

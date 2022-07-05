@@ -59,7 +59,7 @@ const Card = ({ book }: Props) => {
               </div>
             </div>
             <div className="modal-footer">
-              <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" className="btn btn-dark" data-bs-dismiss="modal">Close</button>
               <button type="button" className="btn btn-primary">Start Reading</button>
               <button type="button" className="btn btn-primary">Want to Read</button>
               <button type="button" className="btn btn-primary">Read</button>

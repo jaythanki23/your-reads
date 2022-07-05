@@ -6,7 +6,7 @@ import { initialState } from "./bookContext";
 import { bookStateType, ProviderProps } from "../../types/dataTypes";
 import { bookInfo } from "../../types/dataTypes";
 
-import { DISPLAY } from "../../types/reducerTypes";
+import { CLEAR_DISPLAY, DISPLAY } from "../../types/reducerTypes";
 
 const BookState = (props: ProviderProps) => {
   const [state, dispatch] = useReducer(bookReducer, initialState);
@@ -37,7 +37,7 @@ const BookState = (props: ProviderProps) => {
       console.log(result);
 
       const resultObj: bookStateType = {
-        info: result
+        display: result
       }
 
       // console.log(resultObj);
@@ -51,13 +51,17 @@ const BookState = (props: ProviderProps) => {
       console.log(error);
     }
   }
+
+  // Clear display
+  const clear = () => { dispatch({ type: CLEAR_DISPLAY }) }
   
 
   return <BookContext.Provider 
           value={{
-            info: state.info,
+            display: state.display,
             error: state.error,
-            search
+            search,
+            clear
           }}
         >
           {props.children}

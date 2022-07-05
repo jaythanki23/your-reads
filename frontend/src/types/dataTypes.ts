@@ -37,8 +37,9 @@ export interface bookInfo {
 };
 
 export interface bookStateType {
-  info?: bookInfo[],
+  display?: bookInfo[],
   error?: string,
   //methods
-  search?: (text: string) => void
+  search?: (text: string) => void,
+  clear?: () => void
 }
