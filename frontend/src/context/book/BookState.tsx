@@ -20,6 +20,8 @@ const BookState = (props: ProviderProps) => {
         }
       });
 
+      console.log(res.data.items);
+
       const result: bookInfo[] = res.data.items.map((x: any) => {
         const obj: bookInfo = {
           id: x.id,

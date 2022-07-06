@@ -1,9 +1,9 @@
 import express from "express";
 import protect from "../middleware/authMiddleware";
-import { read } from "../controller/books";
+import { createRead, getRead } from "../controller/books";
 
 const router = express.Router();
 
-router.get('/read', protect, read);
+router.route('/read').post(protect, createRead).get(protect, getRead);
 
 export { router };
