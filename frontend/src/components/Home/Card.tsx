@@ -1,15 +1,30 @@
-import React, { useRef } from 'react';
+import React, { useContext } from 'react';
 import { bookContext } from '../../context/book/bookContext';
 import { bookInfo } from '../../types/dataTypes';
-import Modal from './Modal'; 
+// import Modal from './Modal'; 
 
 interface Props {
-  book: bookInfo
+  book: bookInfo, 
 }
 
 
 
 const Card = ({ book }: Props) => {
+  const { insertRead } = useContext(bookContext);
+
+  const onClickRead = () => {
+    insertRead?.({
+      id: book.id,
+      title: book.title,
+      authors: book.authors,
+      categories: book.categories,
+      image: book.image,
+      description: book.description,
+      pages: book.pages,
+      publishedDate: book.publishedDate,
+      status: "read"
+    });
+  }
   
   return (
     <div>
@@ -62,7 +77,7 @@ const Card = ({ book }: Props) => {
               <button type="button" className="btn btn-dark" data-bs-dismiss="modal">Close</button>
               <button type="button" className="btn btn-primary">Start Reading</button>
               <button type="button" className="btn btn-primary">Want to Read</button>
-              <button type="button" className="btn btn-primary">Read</button>
+              <button type="button" className="btn btn-primary" onClick={onClickRead}>Read</button>
             </div>
           </div>
         </div>

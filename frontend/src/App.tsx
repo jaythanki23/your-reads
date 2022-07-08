@@ -6,6 +6,7 @@ import BookState from './context/book/BookState';
 import Login from './components/auth/Login';
 import Home from './components/Home/Home';
 import Navbar from './layout/Navbar';
+import Read from './components/Read/Read';
 import PrivateRoute from './routing/PrivateRoute';
 import setAuthToken from './utils/setAuthToken';
 
@@ -30,6 +31,10 @@ const App = () => {
                 <Route path='/' element={<Login />} />
                 <Route path='/home' element={<PrivateRoute>
                                               <Home />
+                                            </PrivateRoute>} 
+                />
+                <Route path='/read' element={<PrivateRoute>
+                                              <Read />
                                             </PrivateRoute>} 
                 />
               </Routes>

@@ -1,5 +1,4 @@
 import { createContext } from "react";
-import { RegisterData } from "../../types/dataTypes";
 import { StateType } from "../../types/dataTypes";
 
 

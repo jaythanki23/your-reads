@@ -8,8 +8,8 @@ import { bookContext } from '../../context/book/bookContext';
 
 
 const Home = () => {
-  const { name, email, image, error, loading, loadUser } = useContext(AuthContext);
-  const { search } = useContext(bookContext);
+  const { error, loading, loadUser } = useContext(AuthContext);
+  const { search, getRead } = useContext(bookContext);
 
   const [text, setText] = useState<string>('');
 
@@ -29,6 +29,7 @@ const Home = () => {
 
   useEffect(() => {
     loadUser?.();
+    getRead?.();
   }, []);
 
   return (

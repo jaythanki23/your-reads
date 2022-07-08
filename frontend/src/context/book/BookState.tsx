@@ -1,12 +1,12 @@
-import { useState, useReducer } from "react";
+import { useReducer } from "react";
 import axios from "axios";
 import { bookContext as BookContext } from "./bookContext";
 import bookReducer from "./bookReducer";
 import { initialState } from "./bookContext";
-import { bookStateType, ProviderProps } from "../../types/dataTypes";
-import { bookInfo } from "../../types/dataTypes";
+import { bookStateType, ProviderProps, bookInfo } from "../../types/dataTypes";
 
-import { CLEAR_DISPLAY, DISPLAY } from "../../types/reducerTypes";
+
+import { CLEAR_DISPLAY, DISPLAY, SHOW_MESSAGE, SET_READ } from "../../types/reducerTypes";
 
 const BookState = (props: ProviderProps) => {
   const [state, dispatch] = useReducer(bookReducer, initialState);
@@ -36,7 +36,7 @@ const BookState = (props: ProviderProps) => {
         return obj;
       });
 
-      console.log(result);
+      // console.log(result);
 
       const resultObj: bookStateType = {
         display: result
@@ -44,26 +44,75 @@ const BookState = (props: ProviderProps) => {
 
       // console.log(resultObj);
 
-      dispatch({
-        type: DISPLAY,
-        payload: resultObj
-      })
+      dispatch({ type: DISPLAY, payload: resultObj })
 
-    } catch (error) {
-      console.log(error);
+    } catch (error: any) {
+      const ans: bookStateType = {
+        message: error.response.data.message
+      }
+      dispatch({ type: SHOW_MESSAGE, payload: ans });
     }
   }
 
   // Clear display
   const clear = () => { dispatch({ type: CLEAR_DISPLAY }) }
+
+  // Insert books with status 'read'
+  const insertRead = async (data: bookInfo) => {
+    const config = {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }
+
+    try {
+      const res: any = await axios.post('/books/read', data, config);
+
+      const ans: bookStateType = {
+        message: res.message
+      }
+
+      dispatch({ type: SHOW_MESSAGE, payload: ans });
+
+    } catch (error: any) {
+      const ans: bookStateType = {
+        message: error.response.data.message
+      }
+      dispatch({ type: SHOW_MESSAGE, payload: ans });
+    }
+  }
+
+  // Get books with status 'read'
+  const getRead = async () => {
+    try {
+      const res: any = await axios.get('/books/read');
+
+      const ans: bookStateType = {
+        read: res.data
+      }
+
+      dispatch({ type: SET_READ, payload: ans });
+    } catch (error: any) {
+      const ans: bookStateType = {
+        message: error.response.data.message
+      }
+      dispatch({ type: SHOW_MESSAGE, payload: ans });
+    }
+  }
+
   
 
   return <BookContext.Provider 
           value={{
             display: state.display,
-            error: state.error,
+            message: state.message,
+            read: state.read,
+            reading: state.reading,
+            shallRead: state.shallRead,
             search,
-            clear
+            clear,
+            insertRead,
+            getRead
           }}
         >
           {props.children}

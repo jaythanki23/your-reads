@@ -33,13 +33,24 @@ export interface bookInfo {
   image?: string | null | undefined,
   description?: string | null | undefined,
   pages?: number | null | undefined,
-  publishedDate?: string | null | undefined
+  publishedDate?: string | null | undefined,
+  status?: string | null | undefined,
 };
+
+export interface bookResponse extends bookInfo {
+  _id?: string | null | undefined,
+  user?: string | null | undefined, 
+}
 
 export interface bookStateType {
   display?: bookInfo[],
-  error?: string,
+  message?: string,
+  read?: bookResponse[],
+  reading?: bookResponse[],
+  shallRead?: bookResponse[],
   //methods
   search?: (text: string) => void,
-  clear?: () => void
+  clear?: () => void,
+  insertRead?: (data: bookInfo) => void,
+  getRead?: () => void
 }
