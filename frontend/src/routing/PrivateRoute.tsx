@@ -7,7 +7,7 @@ const PrivateRoute = (props: ProviderProps) => {
   const { isAuthenticated } = useContext(authContext);
   return (
     <>
-      {!localStorage.token && !isAuthenticated ? (<Navigate to={'/'} />) : (props.children)}
+      {!localStorage.token && !isAuthenticated ? (<Navigate to={'/login'} />) : (props.children)}
     </>
   )
 }

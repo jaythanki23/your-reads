@@ -20,7 +20,7 @@ const Navbar = () => {
   const guestLinks = (
     <>
       <li className='nav-item'>
-        <NavLink to='/login' className='nav-link link-dark fs-5 fw-bold' >Login</NavLink>
+        <NavLink to='/' className='nav-link link-dark fw-bold' style={({ isActive }) => isActive ? activeStyle : {}} >Login</NavLink>
       </li>
     </>
   );
