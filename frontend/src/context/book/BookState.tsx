@@ -6,7 +6,7 @@ import { initialState } from "./bookContext";
 import { bookStateType, ProviderProps, bookInfo } from "../../types/dataTypes";
 
 
-import { CLEAR_DISPLAY, DISPLAY, SHOW_MESSAGE, SET_READ } from "../../types/reducerTypes";
+import { CLEAR_DISPLAY, DISPLAY, SHOW_MESSAGE, CLEAR_MESSAGE, SET_READ } from "../../types/reducerTypes";
 
 const BookState = (props: ProviderProps) => {
   const [state, dispatch] = useReducer(bookReducer, initialState);
@@ -51,6 +51,8 @@ const BookState = (props: ProviderProps) => {
         message: error.response.data.message
       }
       dispatch({ type: SHOW_MESSAGE, payload: ans });
+
+      setTimeout(() => dispatch({ type: CLEAR_MESSAGE }), 5000);
     }
   }
 
@@ -68,17 +70,25 @@ const BookState = (props: ProviderProps) => {
     try {
       const res: any = await axios.post('/books/read', data, config);
 
+      console.log(res);
+
       const ans: bookStateType = {
-        message: res.message
+        message: res.data.message
       }
 
       dispatch({ type: SHOW_MESSAGE, payload: ans });
+
+      setTimeout(() => dispatch({ type: CLEAR_MESSAGE }), 5000);
+
+
 
     } catch (error: any) {
       const ans: bookStateType = {
         message: error.response.data.message
       }
       dispatch({ type: SHOW_MESSAGE, payload: ans });
+
+      setTimeout(() => dispatch({ type: CLEAR_MESSAGE }), 5000);
     }
   }
 
@@ -97,6 +107,39 @@ const BookState = (props: ProviderProps) => {
         message: error.response.data.message
       }
       dispatch({ type: SHOW_MESSAGE, payload: ans });
+
+      setTimeout(() => dispatch({ type: CLEAR_MESSAGE }), 5000);
+    }
+  }
+
+  // Remove book
+  const remove = async (id: any) => {
+    const config = {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }
+
+    try {
+      const res = await axios.delete(`/books/${id}`);
+
+      const ans: bookStateType = {
+        message: res.data.message
+      }
+
+      dispatch({ type: SHOW_MESSAGE, payload: ans });
+
+      setTimeout(() => dispatch({ type: CLEAR_MESSAGE }), 5000);
+
+      getRead();
+      
+    } catch (error: any) {
+      const ans: bookStateType = {
+        message: error.response.data.message
+      }
+      dispatch({ type: SHOW_MESSAGE, payload: ans });
+
+      setTimeout(() => dispatch({ type: CLEAR_MESSAGE }), 5000);
     }
   }
 
@@ -112,7 +155,8 @@ const BookState = (props: ProviderProps) => {
             search,
             clear,
             insertRead,
-            getRead
+            getRead,
+            remove
           }}
         >
           {props.children}

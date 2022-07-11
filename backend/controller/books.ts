@@ -25,14 +25,14 @@ const createRead = async (req: any, res: Response) => {
     });
   }
 
-  const { bookId, title, authors, categories, image, description, pages, publishedDate, status } = req.body;
+  const { id, title, authors, categories, image, description, pages, publishedDate, status } = req.body;
 
-  const checkBook = await Book.findOne({ bookId });
+  const checkBook = await Book.findOne({ id });
 
   if(!checkBook) {
     try {
       const book = await Book.create({
-        bookId,
+        id,
         title,
         authors,
         categories,
@@ -54,11 +54,36 @@ const createRead = async (req: any, res: Response) => {
     }
   } else {
     res.status(400).json({
-      error: "Book already exists"
+      error: "Book already added"
     })
-  }
-
-  
+  }  
 }
 
-export { createRead, getRead };
+// @desc    Remove book
+// @route   /books
+// @access  Private
+const removeBook = async (req: any, res: Response) => {
+  try {
+    const book = Book.findById(req.params.id);
+
+    if(!book) {
+      res.status(404).json({
+        error: "Book not found"
+      });
+    }
+
+    await book.remove();
+
+    res.status(200).json({
+      message: "Book removed"
+    });
+  }
+  
+  catch (error) {
+    res.status(500).json({
+      error: "Internal Server Error"
+    });
+  }
+}
+
+export { createRead, getRead, removeBook };

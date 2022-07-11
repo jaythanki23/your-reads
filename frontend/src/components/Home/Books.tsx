@@ -9,7 +9,7 @@ const Books = () => {
 
   return (
     <div>
-      {message && <div className="alert alert-danger m-2 p-2" role="alert">
+      {message && <div className="alert alert-success m-2 p-2" role="alert">
                   {message}
                 </div>
       }

@@ -11,5 +11,6 @@ export const USER_NOT_LOADED = 'USER_NOT_LOADED';
 export const DISPLAY = 'DISPLAY';
 export const CLEAR_DISPLAY = 'CLEAR_DISPLAY';
 export const SHOW_MESSAGE = 'SHOW_MESSAGE';
+export const CLEAR_MESSAGE = 'CLEAR_MESSAGE';
 export const SET_READ = 'SET_READ';
 // export const GET_READ = 'GET_READ';

@@ -10,7 +10,7 @@ interface Props {
 
 
 const Card = ({ book }: Props) => {
-  const { insertRead } = useContext(bookContext);
+  const { insertRead, message } = useContext(bookContext);
 
   const onClickRead = () => {
     insertRead?.({
@@ -28,7 +28,7 @@ const Card = ({ book }: Props) => {
   
   return (
     <div>
-      <button type="button" data-bs-toggle="modal" data-bs-target={`#${book.id as string}`} id={`#${book.id as string}`}>
+      <button type="button" data-bs-toggle="modal" data-bs-target={`#b${book.id as string}`} id={`#b${book.id as string}`}>
         <div className="card border-secondary" style={{"width": "225px"}}>
           <img src={book.image as string} className="card-img-top" alt="book cover" style={{"width": "225px", "height": "225px"}} />
           <div className="card-body p-2 mt-2">
@@ -43,7 +43,7 @@ const Card = ({ book }: Props) => {
         </div>
       </button>
       
-      <div className="modal" id={book.id as string} tabIndex={-1} role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div className="modal" id={`b${book.id as string}`} tabIndex={-1} role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div className="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg" role="document">
           <div className="modal-content">
             <div className="modal-header">
@@ -65,6 +65,10 @@ const Card = ({ book }: Props) => {
                     <p><span className='fw-bold'>Page Count:</span> {book.pages}</p>
                   </div>
                 </div>
+                {message && <div className="alert alert-success m-2 p-2" role="alert">
+                  {message}
+                </div>
+              }
                 <div className='row'>
                   <p className='fw-bold text-start mt-4'>Description:</p>
                   <p className='mt-1' style={{"textAlign": "justify", "textJustify": "inter-word"}}>
