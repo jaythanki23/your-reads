@@ -52,7 +52,7 @@ const BookState = (props: ProviderProps) => {
       }
       dispatch({ type: SHOW_MESSAGE, payload: ans });
 
-      setTimeout(() => dispatch({ type: CLEAR_MESSAGE }), 5000);
+      setTimeout(() => dispatch({ type: CLEAR_MESSAGE }), 2000);
     }
   }
 
@@ -78,17 +78,19 @@ const BookState = (props: ProviderProps) => {
 
       dispatch({ type: SHOW_MESSAGE, payload: ans });
 
-      setTimeout(() => dispatch({ type: CLEAR_MESSAGE }), 5000);
+      setTimeout(() => dispatch({ type: CLEAR_MESSAGE }), 2000);
 
+      getRead();
 
 
     } catch (error: any) {
       const ans: bookStateType = {
         message: error.response.data.message
       }
+      console.log(error);
       dispatch({ type: SHOW_MESSAGE, payload: ans });
 
-      setTimeout(() => dispatch({ type: CLEAR_MESSAGE }), 5000);
+      setTimeout(() => dispatch({ type: CLEAR_MESSAGE }), 2000);
     }
   }
 
@@ -108,7 +110,7 @@ const BookState = (props: ProviderProps) => {
       }
       dispatch({ type: SHOW_MESSAGE, payload: ans });
 
-      setTimeout(() => dispatch({ type: CLEAR_MESSAGE }), 5000);
+      setTimeout(() => dispatch({ type: CLEAR_MESSAGE }), 2000);
     }
   }
 
@@ -129,7 +131,7 @@ const BookState = (props: ProviderProps) => {
 
       dispatch({ type: SHOW_MESSAGE, payload: ans });
 
-      setTimeout(() => dispatch({ type: CLEAR_MESSAGE }), 5000);
+      setTimeout(() => dispatch({ type: CLEAR_MESSAGE }), 2000);
 
       getRead();
       
@@ -139,7 +141,7 @@ const BookState = (props: ProviderProps) => {
       }
       dispatch({ type: SHOW_MESSAGE, payload: ans });
 
-      setTimeout(() => dispatch({ type: CLEAR_MESSAGE }), 5000);
+      setTimeout(() => dispatch({ type: CLEAR_MESSAGE }), 2000);
     }
   }
 

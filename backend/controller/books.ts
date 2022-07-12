@@ -27,7 +27,7 @@ const createRead = async (req: any, res: Response) => {
 
   const { id, title, authors, categories, image, description, pages, publishedDate, status } = req.body;
 
-  const checkBook = await Book.findOne({ id });
+  const checkBook = await Book.findOne({ user: req.user._id, id: id });
 
   if(!checkBook) {
     try {

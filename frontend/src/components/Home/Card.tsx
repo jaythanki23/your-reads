@@ -81,7 +81,7 @@ const Card = ({ book }: Props) => {
               <button type="button" className="btn btn-dark" data-bs-dismiss="modal">Close</button>
               <button type="button" className="btn btn-primary">Start Reading</button>
               <button type="button" className="btn btn-primary">Want to Read</button>
-              <button type="button" className="btn btn-primary" onClick={onClickRead}>Read</button>
+              <button type="button" className="btn btn-primary" data-bs-dismiss="modal" onClick={onClickRead}>Read</button>
             </div>
           </div>
         </div>

@@ -53,10 +53,10 @@ const ReadCard = ({ bookRes }: Props) => {
                     <p><span className='fw-bold'>Page Count:</span> {bookRes.pages}</p>
                   </div>
                 </div>
-                {message && <div className="alert alert-success m-2 p-2" role="alert">
+                {/* {message && <div className="alert alert-success m-2 p-2" role="alert">
                               {message}
                             </div>
-                }
+                } */}
                 <div className='row'>
                   <p className='fw-bold text-start mt-4'>Description:</p>
                   <p className='mt-1' style={{"textAlign": "justify", "textJustify": "inter-word"}}>
@@ -69,7 +69,7 @@ const ReadCard = ({ bookRes }: Props) => {
               <button type="button" className="btn btn-dark" data-bs-dismiss="modal">Close</button>
               <button type="button" className="btn btn-primary">Add to Reading</button>
               <button type="button" className="btn btn-primary">Add to Shelf</button>
-              <button type="button" className="btn btn-primary" onClick={deleteBook}>Remove from Read</button>
+              <button type="button" className="btn btn-primary" data-bs-dismiss="modal" onClick={deleteBook}>Remove from Read</button>
             </div>
           </div>
         </div>
