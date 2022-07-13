@@ -6,7 +6,7 @@ interface Props {
   bookRes: bookResponse
 }
 
-const ReadCard = ({ bookRes }: Props) => {
+const ShelfCard = ({ bookRes }: Props) => {
   const { message, remove } = useContext(bookContext);
 
 
@@ -68,8 +68,8 @@ const ReadCard = ({ bookRes }: Props) => {
             <div className="modal-footer">
               <button type="button" className="btn btn-dark" data-bs-dismiss="modal">Close</button>
               <button type="button" className="btn btn-primary">Add to Reading</button>
-              <button type="button" className="btn btn-primary">Add to Shelf</button>
-              <button type="button" className="btn btn-primary" data-bs-dismiss="modal" onClick={deleteBook}>Remove from Read</button>
+              <button type="button" className="btn btn-primary">Add to Read</button>
+              <button type="button" className="btn btn-primary" data-bs-dismiss="modal" onClick={deleteBook}>Remove from Shelf</button>
             </div>
           </div>
         </div>
@@ -78,4 +78,4 @@ const ReadCard = ({ bookRes }: Props) => {
   )
 }
 
-export default ReadCard
+export default ShelfCard

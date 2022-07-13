@@ -38,6 +38,11 @@ const Navbar = () => {
         </NavLink>
       </li>
       <li className='nav-item'>
+        <NavLink to='/shelf' className='nav-link link-dark fw-bold' style={({ isActive }) => isActive ? activeStyle : {}}>
+          Shelf
+        </NavLink>
+      </li>
+      <li className='nav-item'>
         <a href='#' className='nav-link fw-bold' onClick={onLogout} style={{'color': 'black'}} ><span>Logout</span></a>
       </li>
     </>

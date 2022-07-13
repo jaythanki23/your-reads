@@ -1,17 +1,17 @@
 import React, { useContext, useEffect } from 'react';
 import { authContext } from '../../context/auth/authContext';
 import { bookContext } from '../../context/book/bookContext';
-import ReadCard from './ReadCard';
+import ShelfCard from './ShelfCard';
 import Spinner from '../../layout/Spinner';
 
 
-const Read = () => {
+const Shelf = () => {
   const { loading, loadUser } = useContext(authContext);
-  const { read, getRead, message } = useContext(bookContext);
+  const { shelf, getRead, message } = useContext(bookContext);
 
   useEffect(() => {
       loadUser?.();
-      getRead?.('read');
+      getRead?.('shelf');
   }, []);
   
 
@@ -24,9 +24,9 @@ const Read = () => {
                             </div>
       }
       {!loading ? <div className='vh-100 d-flex flex-column align-items-center mt-5 p-5 gap-3'>
-                    <p className='fs-1' style={{'fontFamily': 'monospace'}}>Books that you have read</p>
+                    <p className='fs-1' style={{'fontFamily': 'monospace'}}>Books that you want to read</p>
                     <div className='vh-100 d-flex flex-row justify-content-center align-items-center flex-wrap p-5 gap-4'>
-                      {read?.map((obj) => <ReadCard key={obj.id} bookRes={obj} /> )}
+                      {shelf?.map((obj) => <ShelfCard key={obj.id} bookRes={obj} /> )}
                     </div>
                   </div> : 
                   <Spinner />
@@ -35,4 +35,4 @@ const Read = () => {
   )
 }
 
-export default Read
+export default Shelf;

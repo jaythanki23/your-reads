@@ -47,11 +47,11 @@ export interface bookStateType {
   message?: string,
   read?: bookResponse[],
   reading?: bookResponse[],
-  shallRead?: bookResponse[],
+  shelf?: bookResponse[],
   //methods
   search?: (text: string) => void,
   clear?: () => void,
   insertRead?: (data: bookInfo) => void,
-  getRead?: () => void
-  remove?: (id: any) => void
+  getRead?: (status: string) => void
+  remove?: (id: any, status: any) => void
 }

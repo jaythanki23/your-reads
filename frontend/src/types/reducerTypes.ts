@@ -13,4 +13,7 @@ export const CLEAR_DISPLAY = 'CLEAR_DISPLAY';
 export const SHOW_MESSAGE = 'SHOW_MESSAGE';
 export const CLEAR_MESSAGE = 'CLEAR_MESSAGE';
 export const SET_READ = 'SET_READ';
+export const SET_READING = 'SET_READING';
+export const SET_SHELF = 'SET_SHELF';
+
 // export const GET_READ = 'GET_READ';

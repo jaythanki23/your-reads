@@ -29,7 +29,7 @@ const Home = () => {
 
   useEffect(() => {
     loadUser?.();
-    getRead?.();
+    // getRead?.();
   }, []);
 
   return (

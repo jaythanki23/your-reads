@@ -5,7 +5,7 @@ export const initialState: bookStateType = {
   display: [],
   read: [],
   reading: [],
-  shallRead: [],
+  shelf: [],
   message: ''
 };
 

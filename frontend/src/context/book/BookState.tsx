@@ -6,7 +6,7 @@ import { initialState } from "./bookContext";
 import { bookStateType, ProviderProps, bookInfo } from "../../types/dataTypes";
 
 
-import { CLEAR_DISPLAY, DISPLAY, SHOW_MESSAGE, CLEAR_MESSAGE, SET_READ } from "../../types/reducerTypes";
+import { CLEAR_DISPLAY, DISPLAY, SHOW_MESSAGE, CLEAR_MESSAGE, SET_READ, SET_SHELF, SET_READING } from "../../types/reducerTypes";
 
 const BookState = (props: ProviderProps) => {
   const [state, dispatch] = useReducer(bookReducer, initialState);
@@ -80,7 +80,7 @@ const BookState = (props: ProviderProps) => {
 
       setTimeout(() => dispatch({ type: CLEAR_MESSAGE }), 2000);
 
-      getRead();
+      getRead(data.status as string);
 
 
     } catch (error: any) {
@@ -96,15 +96,30 @@ const BookState = (props: ProviderProps) => {
   }
 
   // Get books with status 'read'
-  const getRead = async () => {
+  const getRead = async (status: string) => {
     try {
-      const res: any = await axios.get('/books/read');
+      const res: any = await axios.get('/books/read', { params: { status } });
+      // console.log(res);
+      // console.log(status);
+      let ans: bookStateType = {};
 
-      const ans: bookStateType = {
-        read: res.data
+      switch (status) {
+        case 'read':
+          ans.read = res.data;
+          dispatch({ type: SET_READ, payload: ans });
+          break;
+        case 'shelf':
+          ans.shelf = res.data
+          dispatch({ type: SET_SHELF, payload: ans });
+          break;
+        case 'reading':
+          ans.reading = res.data;
+          dispatch({ type: SET_READING, payload: ans });
+          break;
+        default:
+          break;
       }
 
-      dispatch({ type: SET_READ, payload: ans });
     } catch (error: any) {
       const ans: bookStateType = {
         message: error.response.data.error
@@ -116,7 +131,7 @@ const BookState = (props: ProviderProps) => {
   }
 
   // Remove book
-  const remove = async (id: any) => {
+  const remove = async (id: any, status: string) => {
     const config = {
       headers: {
         'Content-Type': 'application/json'
@@ -134,7 +149,7 @@ const BookState = (props: ProviderProps) => {
 
       setTimeout(() => dispatch({ type: CLEAR_MESSAGE }), 2000);
 
-      getRead();
+      getRead(status);
       
     } catch (error: any) {
       const ans: bookStateType = {
@@ -154,7 +169,7 @@ const BookState = (props: ProviderProps) => {
             message: state.message,
             read: state.read,
             reading: state.reading,
-            shallRead: state.shallRead,
+            shelf: state.shelf,
             search,
             clear,
             insertRead,

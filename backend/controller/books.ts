@@ -1,12 +1,12 @@
 import { Request, Response } from "express";
 import Book from "../models/Book";
 
-// @desc    Get all the books with status as 'read'
+// @desc    Get all the books with the queried status
 // @route   /books/read
 // @access  Private
 const getRead = async (req: any, res: Response) => {
   try {
-    const books = await Book.find({ user: req.user._id, status: "read" });
+    const books = await Book.find({ user: req.user._id, status: req.query.status });
     res.status(200).send(books);
   } catch (error) {
     res.status(500).json({
@@ -15,7 +15,7 @@ const getRead = async (req: any, res: Response) => {
   }
 }
 
-// @desc    Insert a book with status as 'read'
+// @desc    Insert a book
 // @route   /books/read
 // @access  Private
 const createRead = async (req: any, res: Response) => {
@@ -63,11 +63,11 @@ const createRead = async (req: any, res: Response) => {
 }
 
 // @desc    Remove book
-// @route   /books
+// @route   /books/:id
 // @access  Private
 const removeBook = async (req: any, res: Response) => {
   try {
-    const book = Book.findById(req.params.id);
+    const book = await Book.findById(req.params.id);
 
     if(!book) {
       res.status(404).json({
@@ -89,4 +89,32 @@ const removeBook = async (req: any, res: Response) => {
   }
 }
 
-export { createRead, getRead, removeBook };
+// @desc    Update a book
+// @route   /books/:id
+// @access  Private
+const updateBook = async (req: any, res: Response) => {
+  const book = await Book.findById(req.params.id);
+
+  if(!book) {
+    res.status(400).json({
+      error: "Book not found"
+    });
+  } else {
+    try {
+      const result = await book.update( { status: req.body.status }); 
+      
+      res.status(200).send(result);
+      // res.status(200).json({
+      //   message: "Book updated"
+      // });
+
+    } catch (error) {
+      res.status(500).json({
+        error: "Internal Server Error"
+      });
+    }
+  }
+
+}
+
+export { createRead, getRead, removeBook, updateBook };
