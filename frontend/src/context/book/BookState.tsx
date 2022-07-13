@@ -84,8 +84,9 @@ const BookState = (props: ProviderProps) => {
 
 
     } catch (error: any) {
+      console.log(error);
       const ans: bookStateType = {
-        message: error.response.data.message
+        message: error.response.data.error
       }
       console.log(error);
       dispatch({ type: SHOW_MESSAGE, payload: ans });
@@ -106,7 +107,7 @@ const BookState = (props: ProviderProps) => {
       dispatch({ type: SET_READ, payload: ans });
     } catch (error: any) {
       const ans: bookStateType = {
-        message: error.response.data.message
+        message: error.response.data.error
       }
       dispatch({ type: SHOW_MESSAGE, payload: ans });
 
@@ -137,7 +138,7 @@ const BookState = (props: ProviderProps) => {
       
     } catch (error: any) {
       const ans: bookStateType = {
-        message: error.response.data.message
+        message: error.response.data.error
       }
       dispatch({ type: SHOW_MESSAGE, payload: ans });
 

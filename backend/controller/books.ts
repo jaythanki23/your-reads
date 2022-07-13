@@ -29,6 +29,8 @@ const createRead = async (req: any, res: Response) => {
 
   const checkBook = await Book.findOne({ user: req.user._id, id: id });
 
+  // console.log(checkBook);
+
   if(!checkBook) {
     try {
       const book = await Book.create({
@@ -53,6 +55,7 @@ const createRead = async (req: any, res: Response) => {
       });
     }
   } else {
+    // console.log("I am in!!");
     res.status(400).json({
       error: "Book already added"
     })
