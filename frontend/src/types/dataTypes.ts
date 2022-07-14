@@ -53,5 +53,6 @@ export interface bookStateType {
   clear?: () => void,
   insertRead?: (data: bookInfo) => void,
   getRead?: (status: string) => void
-  remove?: (id: any, status: any) => void
+  remove?: (id: any, status: any) => void,
+  update?: (id: any, from: string, to: string) => void
 }

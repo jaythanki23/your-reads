@@ -103,10 +103,10 @@ const updateBook = async (req: any, res: Response) => {
     try {
       const result = await book.update( { status: req.body.status }); 
       
-      res.status(200).send(result);
-      // res.status(200).json({
-      //   message: "Book updated"
-      // });
+      // res.status(200).send(result);
+      res.status(200).json({
+        message: "Book updated"
+      });
 
     } catch (error) {
       res.status(500).json({

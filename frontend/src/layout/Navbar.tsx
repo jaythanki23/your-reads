@@ -33,13 +33,18 @@ const Navbar = () => {
         </NavLink>
       </li>
       <li className='nav-item'>
-        <NavLink to='/read' className='nav-link link-dark fw-bold' style={({ isActive }) => isActive ? activeStyle : {}}>
-          Read
+        <NavLink to='/reading' className='nav-link link-dark fw-bold' style={({ isActive }) => isActive ? activeStyle : {}}>
+          Reading
         </NavLink>
       </li>
       <li className='nav-item'>
         <NavLink to='/shelf' className='nav-link link-dark fw-bold' style={({ isActive }) => isActive ? activeStyle : {}}>
           Shelf
+        </NavLink>
+      </li>
+      <li className='nav-item'>
+        <NavLink to='/read' className='nav-link link-dark fw-bold' style={({ isActive }) => isActive ? activeStyle : {}}>
+          Read
         </NavLink>
       </li>
       <li className='nav-item'>

@@ -132,11 +132,6 @@ const BookState = (props: ProviderProps) => {
 
   // Remove book
   const remove = async (id: any, status: string) => {
-    const config = {
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    }
 
     try {
       const res = await axios.delete(`/books/${id}`);
@@ -161,6 +156,41 @@ const BookState = (props: ProviderProps) => {
     }
   }
 
+  // Update a book
+  const update = async (id: any, from: string, to: string) => {
+    const config = {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }
+
+    const data: any = {
+      status: to
+    }
+
+    try {
+      const res = await axios.put(`/books/${id}`, data, config);
+
+      const ans: bookStateType = {
+        message: res.data.message
+      }
+
+      dispatch({ type: SHOW_MESSAGE, payload: ans });
+
+      setTimeout(() => dispatch({ type: CLEAR_MESSAGE }), 2000);
+
+      getRead(from);
+
+    } catch (error: any) {
+      const ans: bookStateType = {
+        message: error.response.data.error
+      }
+      dispatch({ type: SHOW_MESSAGE, payload: ans });
+
+      setTimeout(() => dispatch({ type: CLEAR_MESSAGE }), 2000);
+    }
+  }
+
   
 
   return <BookContext.Provider 
@@ -174,7 +204,8 @@ const BookState = (props: ProviderProps) => {
             clear,
             insertRead,
             getRead,
-            remove
+            remove,
+            update
           }}
         >
           {props.children}
