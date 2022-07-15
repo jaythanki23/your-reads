@@ -20,17 +20,11 @@ const ReadingCard = ({ bookRes }: Props) => {
 
   return (
     <div>
-      <button type="button" data-bs-toggle="modal" data-bs-target={`#b${bookRes.id as string}`} id={`#b${bookRes.id as string}`}>
+      {/* <button type="button" data-bs-toggle="modal" data-bs-target={`#b${bookRes.id as string}`} id={`#b${bookRes.id as string}`}>
         <div className="card border-secondary" style={{"width": "225px"}}>
           <img src={bookRes.image as string} className="card-img-top" alt="book cover" style={{"width": "225px", "height": "225px"}} />
           <div className="card-body p-2 mt-2">
             <h5 className="card-title">{bookRes.title}</h5>
-            {/* <p className="card-text">{book.description}</p> */}
-            {/* <p className="card-text">{book.authors}</p>
-            <p className="card-text">{book.categories}</p>
-            <p className="card-text">{book.publishedDate}</p>
-            <p className="card-text">{book.pages}</p> */}
-            {/* <a href="#" className="btn btn-primary">Go somewhere</a> */}
           </div>
         </div>
       </button>
@@ -47,25 +41,29 @@ const ReadingCard = ({ bookRes }: Props) => {
             <div className="modal-body">
               <div className='container-fluid'>
                 <div className='row'>
-                  <div className='col-md-4'>
+                  <div className='col-md'>
                     <img src={bookRes.image as string} className="card-img-top" alt="book cover" style={{"width": "200px", "height": "200px"}} />
                   </div>
-                  <div className='col-md-7 ms-auto text-start'>
-                    <p><span className='fw-bold'>Author(s):</span> {bookRes.authors}</p>
-                    <p><span className='fw-bold'>Published Date:</span> {bookRes.publishedDate}</p>
-                    <p><span className='fw-bold'>Category:</span> {bookRes.categories}</p>
-                    <p><span className='fw-bold'>Page Count:</span> {bookRes.pages}</p>
+                </div>
+                <div className='row'>
+                <a data-bs-toggle="modal" href="#myModal2" className="btn btn-primary">Launch modal</a>
+                <div className="modal" id="myModal2" data-bs-backdrop="static">
+                  <div className="modal-dialog">
+                  <div className="modal-content">
+                    <div className="modal-header">
+                      <h4 className="modal-title">2nd Modal title</h4>
+                      <button type="button" className="btn-close" data-bs-dismiss="modal" aria-hidden="true"></button>
+                    </div><div className="container"></div>
+                    <div className="modal-body">
+                      Content for the dialog / modal goes here.
+                    </div>
+                    <div className="modal-footer">
+                      <a href="#" data-bs-dismiss="modal" className="btn btn-outline-dark">Close</a>
+                      <a href="#" className="btn btn-primary">Save changes</a>
+                    </div>
                   </div>
                 </div>
-                {/* {message && <div className="alert alert-success m-2 p-2" role="alert">
-                              {message}
-                            </div>
-                } */}
-                <div className='row'>
-                  <p className='fw-bold text-start mt-4'>Description:</p>
-                  <p className='mt-1' style={{"textAlign": "justify", "textJustify": "inter-word"}}>
-                    {bookRes.description}
-                  </p>
+              </div>
                 </div>
               </div>
             </div>
@@ -77,6 +75,59 @@ const ReadingCard = ({ bookRes }: Props) => {
             </div>
           </div>
         </div>
+      </div> */}
+      <a data-bs-toggle="modal" href="#myModal">
+          <div className="card border-secondary" style={{"width": "225px"}}>
+            <img src={bookRes.image as string} className="card-img-top" alt="book cover" style={{"width": "225px", "height": "225px"}} />
+            <div className="card-body p-2 mt-2">
+              <h5 className="card-title">{bookRes.title}</h5>
+            </div>
+          </div>
+      </a>
+
+      <div className="modal" id="myModal">
+        <div className="modal-dialog modal-lg">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title" id="exampleModalLongTitle">{bookRes.title}</h5>    
+                <button type="button" className="btn-close" data-bs-dismiss="modal" aria-hidden="true"></button>
+              </div><div className="container"></div>
+              <div className="modal-body">
+                <div className='container-fluid'>
+                  <div className='row'>
+                      <div className='col-md'>
+                        <img src={bookRes.image as string} className="card-img-top" alt="book cover" style={{"width": "200px", "height": "200px"}} />
+                      </div>
+                  </div>
+                  <a data-bs-toggle="modal" href="#myModal2" className="btn btn-primary">Launch modal</a>
+                </div>
+              </div>
+              <div className="modal-footer">
+                <a href="#" data-bs-dismiss="modal" className="btn btn-outline-dark">Close</a>
+              </div>
+            </div>
+          </div>
+      </div>
+      <div className="modal" id="myModal2" data-bs-backdrop="static">
+        <div className="modal-dialog">
+            <div className="modal-content bg-primary">
+              <div className="modal-header">
+                <h4 className="modal-title">2nd Modal title</h4>
+                <button type="button" className="btn-close" data-bs-dismiss="modal" aria-hidden="true"></button>
+              </div><div className="container"></div>
+              <div className="modal-body">
+                Content for the dialog / modal goes here.
+                Content for the dialog / modal goes here.
+                Content for the dialog / modal goes here.
+                Content for the dialog / modal goes here.
+                Content for the dialog / modal goes here.
+              </div>
+              <div className="modal-footer">
+                <a href="#" data-bs-dismiss="modal" className="btn btn-outline-dark">Close</a>
+                <a href="#" className="btn btn-primary">Save changes</a>
+              </div>
+            </div>
+          </div>
       </div>
     </div>
   )
