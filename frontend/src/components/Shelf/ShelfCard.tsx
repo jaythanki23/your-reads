@@ -70,10 +70,10 @@ const ShelfCard = ({ bookRes }: Props) => {
               </div>
             </div>
             <div className="modal-footer">
-              <button type="button" className="btn btn-dark" data-bs-dismiss="modal">Close</button>
+              <button type="button" className="btn btn-outline-dark" data-bs-dismiss="modal">Close</button>
               <button type="button" className="btn btn-primary" name='reading' data-bs-dismiss="modal" onClick={updateBook}>Add to Reading</button>
               <button type="button" className="btn btn-primary" name='read' data-bs-dismiss="modal" onClick={updateBook}>Add to Read</button>
-              <button type="button" className="btn btn-primary" data-bs-dismiss="modal" onClick={deleteBook}>Remove from Shelf</button>
+              <button type="button" className="btn btn-dark" data-bs-dismiss="modal" onClick={deleteBook}>Remove from Shelf</button>
             </div>
           </div>
         </div>
