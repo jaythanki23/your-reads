@@ -10,7 +10,7 @@ const getRead = async (req: any, res: Response) => {
     res.status(200).send(books);
   } catch (error) {
     res.status(500).json({
-      error: error
+      error: "Internal Server Error"
     });
   }
 }
@@ -48,7 +48,7 @@ const createRead = async (req: any, res: Response) => {
       
       res.status(201).json({
         message: "Book added"
-      })
+      });
     } catch (error) {
       res.status(500).json({
         error: "Internal Server Error"
