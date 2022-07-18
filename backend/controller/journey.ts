@@ -25,15 +25,15 @@ const createJourney = async (req: any, res: Response) => {
     });
   }
 
-  const { bookID, from, to, title, date, note } = req.body;
+  const { book, from, to, title, date, note } = req.body;
 
-  const checkJourney = await Journey.findOne({ user: req.user._id, book: bookID, from, to});
+  const checkJourney = await Journey.findOne({ user: req.user._id, book, from, to});
 
   if(!checkJourney) {
     try {
       const journey = await Journey.create({
         user: req.user._id,
-        book: bookID,
+        book,
         from,
         to,
         title,

@@ -59,7 +59,7 @@ const BookState = (props: ProviderProps) => {
   // Clear display
   const clear = () => { dispatch({ type: CLEAR_DISPLAY }) }
 
-  // Insert books with status 'read'
+  // Insert books - POST
   const insertRead = async (data: bookInfo) => {
     const config = {
       headers: {
@@ -84,7 +84,7 @@ const BookState = (props: ProviderProps) => {
 
 
     } catch (error: any) {
-      console.log(error);
+      // console.log(error);
       const ans: bookStateType = {
         message: error.response.data.error
       }
@@ -95,7 +95,7 @@ const BookState = (props: ProviderProps) => {
     }
   }
 
-  // Get books with status 'read'
+  // Get books - GET
   const getRead = async (status: string) => {
     try {
       const res: any = await axios.get('/books/read', { params: { status } });
@@ -130,7 +130,7 @@ const BookState = (props: ProviderProps) => {
     }
   }
 
-  // Remove book
+  // Remove book - DELETE
   const remove = async (id: any, status: string) => {
 
     try {

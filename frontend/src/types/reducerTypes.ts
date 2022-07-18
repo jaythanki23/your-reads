@@ -16,4 +16,5 @@ export const SET_READ = 'SET_READ';
 export const SET_READING = 'SET_READING';
 export const SET_SHELF = 'SET_SHELF';
 
-// export const GET_READ = 'GET_READ';
+// Journeys
+export const SET_JOURNEYS = 'SET_JOURNEYS';

@@ -56,3 +56,26 @@ export interface bookStateType {
   remove?: (id: any, status: any) => void,
   update?: (id: any, from: string, to: string) => void
 }
+
+export interface journeyInfo {
+  book?: any,
+  from?: number,
+  to?: number,
+  title?: string,
+  date?: string,
+  note?: string
+}
+
+export interface journeyStateType {
+  journeys?: journeyResponse[],
+  message?: string,
+  //methods
+  createJourney?: (data: journeyInfo) => void,
+  getJourey?: (bookID: string) => void
+}
+
+export interface journeyResponse extends journeyInfo {
+  _id?: string 
+  user?: string
+}
+
