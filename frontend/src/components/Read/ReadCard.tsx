@@ -40,9 +40,7 @@ const ReadCard = ({ bookRes }: Props) => {
           <div className="modal-content">
             <div className="modal-header">
               <h5 className="modal-title" id="exampleModalLongTitle">{bookRes.title}</h5>
-              <button type="button" className="close" data-bs-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
+              <button type="button" className="btn-close" data-bs-dismiss="modal" aria-hidden="true"></button>
             </div>
             <div className="modal-body">
               <div className='container-fluid'>
@@ -71,9 +69,9 @@ const ReadCard = ({ bookRes }: Props) => {
             </div>
             <div className="modal-footer">
               <button type="button" className="btn btn-outline-dark" data-bs-dismiss="modal">Close</button>
-              <button type="button" className="btn btn-primary" name='reading' data-bs-dismiss="modal" onClick={updateBook}>Add to Reading</button>
-              <button type="button" className="btn btn-primary" name='shelf' data-bs-dismiss="modal" onClick={updateBook}>Add to Shelf</button>
-              <button type="button" className="btn btn-primary" data-bs-dismiss="modal" onClick={deleteBook}>Remove from Read</button>
+              <button type="button" className="btn btn-outline-primary" name='reading' data-bs-dismiss="modal" onClick={updateBook}>Add to Reading</button>
+              <button type="button" className="btn btn-outline-primary" name='shelf' data-bs-dismiss="modal" onClick={updateBook}>Add to Shelf</button>
+              <button type="button" className="btn btn-outline-primary" data-bs-dismiss="modal" onClick={deleteBook}>Remove from Read</button>
             </div>
           </div>
         </div>

@@ -2,7 +2,7 @@ import { journeyContext } from "./journeyContext";
 import journeyReducer from "./journeyReducer";
 import axios from "axios";
 import { useReducer } from "react";
-import { ProviderProps, journeyResponse, journeyStateType } from "../../types/dataTypes";
+import { ProviderProps, journeyResponse, journeyStateType, journeyInfo } from "../../types/dataTypes";
 import { initialState } from "./journeyContext";
 import { SHOW_MESSAGE, CLEAR_MESSAGE, SET_JOURNEYS } from "../../types/reducerTypes";
 
@@ -11,7 +11,7 @@ const JourneyState = (props: ProviderProps) => {
   const [state, dispatch] = useReducer(journeyReducer, initialState);
 
   // create a journey - POST
-  const createJourney = async (data: journeyStateType) => {
+  const createJourney = async (data: journeyInfo) => {
     const config = {
       headers: {
         'Content-Type': 'application/json'
@@ -64,6 +64,8 @@ const JourneyState = (props: ProviderProps) => {
           {{
             journeys: state.journeys,
             message: state.message,
+            getJourney,
+            createJourney
           }}
          >
           {props.children}
