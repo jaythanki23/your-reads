@@ -86,6 +86,7 @@ const ReadingCard = ({ bookRes }: Props) => {
               </div>
               <div className="modal-footer">
                 <a href="#" data-bs-dismiss="modal" className="btn btn-outline-dark">Close</a>
+                <button type="button" className="btn btn-outline-primary" name='read' data-bs-dismiss="modal" onClick={updateBook}>Add to Read</button>
               </div>
             </div>
           </div>

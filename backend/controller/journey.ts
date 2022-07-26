@@ -57,4 +57,58 @@ const createJourney = async (req: any, res: Response) => {
   }
 }
 
-export { createJourney, getJourney };
+// @desc    Delete a journey - DELETE
+// @route   /books/journey/:id
+// @access  Private
+const deleteJourney = async (req: any, res: Response) => {
+    const journey = await Journey.findById(req.params.id);
+
+    if(!journey) {
+      res.status(404).json({
+        error: "Journey not found"
+      });
+    } else {
+      try {
+        await journey.remove();
+
+        res.status(200).json({
+          message: "Journey removed"
+        });
+
+      } catch (error) {
+        res.status(500).json({
+          error: "Internal Server Error"
+        });
+      }
+    }
+}
+
+// @desc    Update a journey - PUT
+// @route   /books/journey/:id
+// @access  Private
+const updateJourney = async (req: any, res: Response) => {
+    const journey = await Journey.findById(req.params.id);
+
+    if(!journey) {
+      res.status(404).send({
+        error: "Journey not found"
+      });
+    } else {
+      const { from, to, title, date, note } = req.body;
+
+      try {
+        const updatedJourney = await journey.update({ from, to, title, date, note });
+
+      res.status(200).json({
+        message: "Journey updated"
+      }); 
+
+      } catch (error) {
+        res.status(500).json({
+          error: "Internal Server Error"
+        });
+      }
+    }
+}
+
+export { createJourney, getJourney, deleteJourney, updateJourney };

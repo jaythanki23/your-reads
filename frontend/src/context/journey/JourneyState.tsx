@@ -27,6 +27,8 @@ const JourneyState = (props: ProviderProps) => {
   
       dispatch({ type: SHOW_MESSAGE, payload: ans });
 
+      getJourney(data.book);
+
     } catch (error: any) {
       const ans: journeyStateType = {
         message: error.response.data.error
@@ -48,13 +50,68 @@ const JourneyState = (props: ProviderProps) => {
       }
 
       dispatch({ type: SET_JOURNEYS, payload: ans});
+      setTimeout(() => dispatch({ type: CLEAR_MESSAGE }), 2000);
+      
     } catch (error: any) {
       const ans: journeyStateType = {
         message: error.response.data.error
       }
       
       dispatch({ type: SHOW_MESSAGE, payload: ans });
+      setTimeout(() => dispatch({ type: CLEAR_MESSAGE }), 2000);
+    }
+  }
 
+  // Delete Journey DELETE
+  const deleteJourney = async (id: string, bookID: string) => {
+    try {
+      const res = await axios.delete(`/books/journey/${id}`);
+
+      const ans: journeyStateType = {
+        message: res.data.message
+      }
+  
+      dispatch({ type: SHOW_MESSAGE, payload: ans });
+      setTimeout(() => dispatch({ type: CLEAR_MESSAGE }), 2000);
+
+      getJourney(bookID);
+
+    } catch (error: any) {
+      const ans: journeyStateType = {
+        message: error.response.data.error
+      }
+      
+      dispatch({ type: SHOW_MESSAGE, payload: ans });
+      setTimeout(() => dispatch({ type: CLEAR_MESSAGE }), 2000);
+    }
+  }
+
+  // Update a journey - PUT
+  const updateJourney = async (data: journeyInfo, id: string) => {
+    const config = {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    };
+
+    try {
+      const res = await axios.put(`/books/journey/${id}`, data, config);
+
+      const ans: journeyStateType = {
+        message: res.data.message
+      }
+  
+      dispatch({ type: SHOW_MESSAGE, payload: ans });
+      setTimeout(() => dispatch({ type: CLEAR_MESSAGE }), 2000);
+
+      getJourney(data.book);
+
+    } catch (error: any) {
+      const ans: journeyStateType = {
+        message: error.response.data.error
+      }
+      
+      dispatch({ type: SHOW_MESSAGE, payload: ans });
       setTimeout(() => dispatch({ type: CLEAR_MESSAGE }), 2000);
     }
   }
@@ -65,7 +122,9 @@ const JourneyState = (props: ProviderProps) => {
             journeys: state.journeys,
             message: state.message,
             getJourney,
-            createJourney
+            createJourney,
+            deleteJourney,
+            updateJourney
           }}
          >
           {props.children}

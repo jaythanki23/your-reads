@@ -71,7 +71,9 @@ export interface journeyStateType {
   message?: string,
   //methods
   createJourney?: (data: journeyInfo) => void,
-  getJourney?: (bookID: string) => void
+  getJourney?: (bookID: string) => void,
+  deleteJourney?: (id: string, bookID: string) => void,
+  updateJourney?: (data: journeyInfo, id: string) => void
 }
 
 export interface journeyResponse extends journeyInfo {
