@@ -39,7 +39,8 @@ const Home = () => {
                 </div>
       }
       {!loading ? <div className='vh-100 d-flex flex-column align-items-center mt-5 p-5 gap-3'>
-                    <p className='fs-1' style={{'fontFamily': 'monospace'}}>Your Reads</p>
+                    {/* <p className='fs-1' style={{'fontFamily': 'monospace'}}>Your Reads</p> */}
+                    <h1 className="text-center mb-3"><i className="bi bi-book" style={{"marginRight": "10px"}}></i>Your reads</h1>
                     <div className='d-flex flex-row justify-content-center gap-3 w-100'>
                       <input type="text" className="form-control form-control-lg w-25 rounded" placeholder="Search" aria-label="Search" onChange={onChange} onKeyDown={onEnter} />
                       {/* <button type='button' className='btn btn-primary'}><i className="bi bi-search"></i></button> */}

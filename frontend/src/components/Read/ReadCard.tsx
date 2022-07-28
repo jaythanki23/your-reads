@@ -38,8 +38,8 @@ const ReadCard = ({ bookRes }: Props) => {
       <div className="modal" id={`b${bookRes.id as string}`} tabIndex={-1} role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div className="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg" role="document">
           <div className="modal-content">
-            <div className="modal-header">
-              <h5 className="modal-title" id="exampleModalLongTitle">{bookRes.title}</h5>
+            <div className="modal-header text-center">
+              <h4 className="modal-title w-100" id="exampleModalLongTitle">{bookRes.title}</h4>
               <button type="button" className="btn-close" data-bs-dismiss="modal" aria-hidden="true"></button>
             </div>
             <div className="modal-body">
@@ -48,17 +48,41 @@ const ReadCard = ({ bookRes }: Props) => {
                   <div className='col-md-4'>
                     <img src={bookRes.image as string} className="card-img-top" alt="book cover" style={{"width": "200px", "height": "200px"}} />
                   </div>
-                  <div className='col-md-7 ms-auto text-start'>
-                    <p><span className='fw-bold'>Author(s):</span> {bookRes.authors}</p>
-                    <p><span className='fw-bold'>Published Date:</span> {bookRes.publishedDate}</p>
-                    <p><span className='fw-bold'>Category:</span> {bookRes.categories}</p>
-                    <p><span className='fw-bold'>Page Count:</span> {bookRes.pages}</p>
+                  <div className='col-md-7 ms-auto text-start mt-3'>
+                    <div className='row'>
+                      <div className='col-md-5'>
+                        <p className='fw-bold text-start'>Author(s):</p>
+                      </div>
+                      <div className='col-md'>
+                        <p className='text-start'>{bookRes.authors}</p>
+                      </div>
+                    </div>
+                    <div className='row'>
+                      <div className='col-md-5'>
+                        <p className='fw-bold text-start'>Published Date:</p>
+                      </div>
+                      <div className='col-md'>
+                        <p className='text-start'>{bookRes.publishedDate}</p>
+                      </div>
+                    </div>
+                    <div className='row'>
+                      <div className='col-md-5'>
+                      <p className='fw-bold text-start'>Category:</p>
+                      </div>
+                      <div className='col-md'>
+                        <p className='text-start'>{bookRes.categories}</p>
+                      </div>
+                    </div>
+                    <div className='row'>
+                      <div className='col-md-5'>
+                        <p className='fw-bold text-start'>Page Count:</p>
+                      </div>
+                      <div className='col-md'>
+                        <p className='text-start'>{bookRes.pages}</p>
+                      </div>
+                    </div>
                   </div>
                 </div>
-                {/* {message && <div className="alert alert-success m-2 p-2" role="alert">
-                              {message}
-                            </div>
-                } */}
                 <div className='row'>
                   <p className='fw-bold text-start mt-4'>Description:</p>
                   <p className='mt-1' style={{"textAlign": "justify", "textJustify": "inter-word"}}>

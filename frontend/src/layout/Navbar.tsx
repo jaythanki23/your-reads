@@ -14,7 +14,9 @@ const Navbar = () => {
 
   let activeStyle = {
     // textDecoration: "underline",
-    color: "#4267B2"
+    // color: "#4267B2"
+    // color: "#F76C6C"
+    color: "#FF3B3F"
   };
 
   const guestLinks = (
@@ -47,15 +49,11 @@ const Navbar = () => {
           Read
         </NavLink>
       </li>
-      <li className='nav-item'>
-        <a href='#' className='nav-link fw-bold' onClick={onLogout} style={{'color': 'black'}} ><span>Logout</span></a>
-      </li>
     </>
   )
-
-
+  // DDE0E5
   return (
-    <nav className='navbar navbar-expand-sm' style={{"backgroundColor": "#DDE0E5", "maxHeight": "60px"}}>
+    <nav className='navbar navbar-expand-sm' style={{"backgroundColor": "#FFF", "maxHeight": "60px"}}>
       <div className='container-fluid'>
         <ul className='navbar-nav'>
           <li className='nav-item'>
@@ -69,9 +67,17 @@ const Navbar = () => {
           </li>
         </ul>
       </div>
+      <div className='container-fluid justify-content-center'>
+        <ul className='navbar-nav gap-3'>
+          {isAuthenticated ? authLinks : ''}
+        </ul>
+      </div>
       <div className='container-fluid justify-content-end'>
         <ul className='navbar-nav'>
-          {isAuthenticated ? authLinks : guestLinks}
+          {/* {isAuthenticated ? authLinks : guestLinks} */}
+          <li className='nav-item'>
+            {isAuthenticated ? <a href='#' className='nav-link fw-bold' onClick={onLogout} style={{'color': 'black'}} ><span>Logout</span></a> : ''}
+          </li>
         </ul>
       </div>
     </nav>

@@ -24,7 +24,6 @@ const Reading = () => {
                             </div>
       }
       {!loading ? <div className='vh-100 d-flex flex-column align-items-center mt-5 p-5 gap-3'>
-                    <p className='fs-1' style={{'fontFamily': 'monospace'}}>Books you are currently reading</p>
                     <div className='vh-100 d-flex flex-row justify-content-center align-items-center flex-wrap p-5 gap-4'>
                       {reading?.map((obj) => <ReadingCard key={obj.id} bookRes={obj} /> )}
                     </div>

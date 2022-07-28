@@ -56,8 +56,8 @@ const ReadingCard = ({ bookRes }: Props) => {
       <div className="modal" id={`b${bookRes.id as string}`} tabIndex={-1} role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div className="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
             <div className="modal-content">
-              <div className="modal-header">
-                <h5 className="modal-title" id="exampleModalLongTitle">{bookRes.title}</h5>    
+              <div className="modal-header text-center">
+                <h4 className="modal-title w-100" id="exampleModalLongTitle">{bookRes.title}</h4>    
                 <button type="button" className="btn-close" data-bs-dismiss="modal" aria-hidden="true"></button>
               </div><div className="container"></div>
               <div className="modal-body">

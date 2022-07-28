@@ -35,7 +35,7 @@ const Journey = ({ journey }: Props) => {
   return (
     <div>
       <button data-bs-toggle="modal" data-bs-target={`#j1${journey._id}`} id={`#j1${journey._id}`} className='btn'>
-        <div className="card" style={{"width": "18rem"}}>
+        <div className="card" style={{"width": "18rem", "backgroundColor": "#CAEBF2"}}>
           <div className="card-body">
             <h5 className="card-title">{journey.title}</h5>
             <h6 className="card-subtitle mb-2 text-muted">Date: {journey.date}, Pages: {journey.from} to {journey.to}</h6>
@@ -71,7 +71,7 @@ const Journey = ({ journey }: Props) => {
 
       <div className="modal" id={`j2${journey._id}`} tabIndex={-1} role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div className="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-          <div className="modal-content">
+          <div className="modal-content" style={{"backgroundColor": "#D8C3A5"}}>
             <div className="modal-header">
               <div className='row'>
                 <div className='col-md-2 mt-1'>
