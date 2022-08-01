@@ -36,13 +36,9 @@ const BookState = (props: ProviderProps) => {
         return obj;
       });
 
-      // console.log(result);
-
       const resultObj: bookStateType = {
         display: result
       }
-
-      // console.log(resultObj);
 
       dispatch({ type: DISPLAY, payload: resultObj })
 
@@ -84,7 +80,6 @@ const BookState = (props: ProviderProps) => {
 
 
     } catch (error: any) {
-      // console.log(error);
       const ans: bookStateType = {
         message: error.response.data.error
       }
@@ -99,8 +94,6 @@ const BookState = (props: ProviderProps) => {
   const getRead = async (status: string) => {
     try {
       const res: any = await axios.get('/books/read', { params: { status } });
-      // console.log(res);
-      // console.log(status);
       let ans: bookStateType = {};
 
       switch (status) {

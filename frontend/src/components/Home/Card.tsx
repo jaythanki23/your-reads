@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import { bookContext } from '../../context/book/bookContext';
 import { bookInfo } from '../../types/dataTypes';
-// import Modal from './Modal'; 
 
 interface Props {
   book: bookInfo, 
@@ -29,7 +28,7 @@ const Card = ({ book }: Props) => {
   
   return (
     <div>
-      <button type="button" data-bs-toggle="modal" data-bs-target={`#b${book.id as string}`} id={`#b${book.id as string}`}>
+      <button type="button" data-bs-toggle="modal" data-bs-target={`#b${book.id as string}`} id={`#b${book.id as string}`} className='btn'>
         <div className="card border-secondary" style={{"width": "225px"}}>
           <img src={book.image as string} className="card-img-top" alt="book cover" style={{"width": "225px", "height": "225px"}} />
           <div className="card-body p-2 mt-2">

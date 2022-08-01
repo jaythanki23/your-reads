@@ -15,8 +15,6 @@ const Read = () => {
   }, []);
   
 
-  // console.log(read);
-
   return (
     <div className='vh-100'>
       {message && <div className="alert alert-success m-2 p-2" role="alert">

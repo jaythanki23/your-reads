@@ -18,9 +18,7 @@ const Login = () => {
   }, [isAuthenticated, navigate]);
 
   const googleSuccess = async (credentialResponse: any) => {
-    // console.log(jwtDecode(credentialResponse.credential as string));
     const userObj: any = jwtDecode(credentialResponse.credential as string);
-    // console.log(userObj);
     const data: RegisterData = {
       name: userObj.name,
       email: userObj.email,
@@ -55,7 +53,6 @@ const Login = () => {
                       }}
                     />
                   </div>
-                  {/* <button className="btn btn-primary btn-lg btn-block mt-4" onClick={onGoogle}><i className="bi bi-google" style={{"marginRight": "10px"}}></i>Log In With Google</button> */}
                 </div>
               </div>
             </div>

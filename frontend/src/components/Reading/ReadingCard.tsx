@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { bookContext } from '../../context/book/bookContext';
 import { journeyContext } from '../../context/journey/journeyContext';
 import { bookResponse, journeyInfo } from '../../types/dataTypes';
@@ -9,7 +9,7 @@ interface Props {
 }
 
 const ReadingCard = ({ bookRes }: Props) => {
-  const { message, remove, update } = useContext(bookContext);
+  const { remove, update } = useContext(bookContext);
   const  { getJourney, createJourney, journeys } = useContext(journeyContext);
 
   const [data, setData] = useState<journeyInfo>({
@@ -44,7 +44,7 @@ const ReadingCard = ({ bookRes }: Props) => {
 
   return (
     <div>
-      <button data-bs-toggle="modal" data-bs-target={`#b${bookRes.id as string}`} id={`#b${bookRes.id as string}`}>
+      <button data-bs-toggle="modal" data-bs-target={`#b${bookRes.id as string}`} id={`#b${bookRes.id as string}`} className='btn'>
           <div className="card border-secondary" style={{"width": "225px"}}>
             <img src={bookRes.image as string} className="card-img-top" alt="book cover" style={{"width": "225px", "height": "225px"}} />
             <div className="card-body p-2 mt-2">
@@ -87,6 +87,8 @@ const ReadingCard = ({ bookRes }: Props) => {
               <div className="modal-footer">
                 <a href="#" data-bs-dismiss="modal" className="btn btn-outline-dark">Close</a>
                 <button type="button" className="btn btn-outline-primary" name='read' data-bs-dismiss="modal" onClick={updateBook}>Add to Read</button>
+                <button type="button" className="btn btn-outline-primary" name='shelf' data-bs-dismiss="modal" onClick={updateBook}>Add to Shelf</button>
+                <button type="button" className="btn btn-outline-danger" data-bs-dismiss="modal" onClick={deleteBook}>Remove from Reading</button>
               </div>
             </div>
           </div>

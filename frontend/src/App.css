@@ -23,10 +23,3 @@ body {
 .nav-link:hover {
   border-bottom: 2px solid #FF3B3F;
 }
-
-/* .modal:nth-of-type(even) {
-  z-index: 1062 !important;
-}
-.modal-backdrop.show:nth-of-type(even) {
-  z-index: 1061 !important;
-} */

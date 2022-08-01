@@ -2,7 +2,7 @@ import { journeyContext } from "./journeyContext";
 import journeyReducer from "./journeyReducer";
 import axios from "axios";
 import { useReducer } from "react";
-import { ProviderProps, journeyResponse, journeyStateType, journeyInfo } from "../../types/dataTypes";
+import { ProviderProps, journeyStateType, journeyInfo } from "../../types/dataTypes";
 import { initialState } from "./journeyContext";
 import { SHOW_MESSAGE, CLEAR_MESSAGE, SET_JOURNEYS } from "../../types/reducerTypes";
 

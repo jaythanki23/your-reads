@@ -7,7 +7,7 @@ interface Props {
 }
 
 const ShelfCard = ({ bookRes }: Props) => {
-  const { message, remove, update } = useContext(bookContext);
+  const { remove, update } = useContext(bookContext);
 
 
   const deleteBook = () => {
@@ -20,17 +20,11 @@ const ShelfCard = ({ bookRes }: Props) => {
 
   return (
     <div>
-      <button type="button" data-bs-toggle="modal" data-bs-target={`#b${bookRes.id as string}`} id={`#b${bookRes.id as string}`}>
+      <button type="button" data-bs-toggle="modal" data-bs-target={`#b${bookRes.id as string}`} id={`#b${bookRes.id as string}`} className='btn'>
         <div className="card border-secondary" style={{"width": "225px"}}>
           <img src={bookRes.image as string} className="card-img-top" alt="book cover" style={{"width": "225px", "height": "225px"}} />
           <div className="card-body p-2 mt-2">
             <h5 className="card-title">{bookRes.title}</h5>
-            {/* <p className="card-text">{book.description}</p> */}
-            {/* <p className="card-text">{book.authors}</p>
-            <p className="card-text">{book.categories}</p>
-            <p className="card-text">{book.publishedDate}</p>
-            <p className="card-text">{book.pages}</p> */}
-            {/* <a href="#" className="btn btn-primary">Go somewhere</a> */}
           </div>
         </div>
       </button>
@@ -95,7 +89,7 @@ const ShelfCard = ({ bookRes }: Props) => {
               <button type="button" className="btn btn-outline-dark" data-bs-dismiss="modal">Close</button>
               <button type="button" className="btn btn-outline-primary" name='reading' data-bs-dismiss="modal" onClick={updateBook}>Add to Reading</button>
               <button type="button" className="btn btn-outline-primary" name='read' data-bs-dismiss="modal" onClick={updateBook}>Add to Read</button>
-              <button type="button" className="btn btn-outline-primary" data-bs-dismiss="modal" onClick={deleteBook}>Remove from Shelf</button>
+              <button type="button" className="btn btn-outline-danger" data-bs-dismiss="modal" onClick={deleteBook}>Remove from Shelf</button>
             </div>
           </div>
         </div>

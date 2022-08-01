@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { authContext as AuthContext } from '../context/auth/authContext';
 import { bookContext } from '../context/book/bookContext';
 
@@ -13,19 +13,9 @@ const Navbar = () => {
   }
 
   let activeStyle = {
-    // textDecoration: "underline",
-    // color: "#4267B2"
-    // color: "#F76C6C"
     color: "#FF3B3F"
   };
 
-  const guestLinks = (
-    <>
-      <li className='nav-item'>
-        <NavLink to='/' className='nav-link link-dark fw-bold' style={({ isActive }) => isActive ? activeStyle : {}} >Login</NavLink>
-      </li>
-    </>
-  );
 
   const authLinks = (
     <>
@@ -51,7 +41,7 @@ const Navbar = () => {
       </li>
     </>
   )
-  // DDE0E5
+  
   return (
     <nav className='navbar navbar-expand-sm' style={{"backgroundColor": "#FFF", "maxHeight": "60px"}}>
       <div className='container-fluid'>

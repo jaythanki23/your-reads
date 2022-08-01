@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import { useContext, useEffect } from 'react';
 import { authContext } from '../../context/auth/authContext';
 import { bookContext } from '../../context/book/bookContext';
 import ShelfCard from './ShelfCard';
@@ -14,8 +14,6 @@ const Shelf = () => {
       getRead?.('shelf');
   }, []);
   
-
-  // console.log(read);
 
   return (
     <div className='vh-100'>

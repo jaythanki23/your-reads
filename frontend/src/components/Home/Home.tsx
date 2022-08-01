@@ -1,7 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import axios from 'axios';
 import { authContext as AuthContext } from '../../context/auth/authContext';
-import { bookInfo } from '../../types/dataTypes';
 import Spinner from '../../layout/Spinner';
 import Books from './Books';
 import { bookContext } from '../../context/book/bookContext';
@@ -9,7 +7,7 @@ import { bookContext } from '../../context/book/bookContext';
 
 const Home = () => {
   const { error, loading, loadUser } = useContext(AuthContext);
-  const { search, getRead } = useContext(bookContext);
+  const { search } = useContext(bookContext);
 
   const [text, setText] = useState<string>('');
 
