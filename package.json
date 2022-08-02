@@ -7,14 +7,16 @@
     "node":"16.13.0"
  },
   "scripts": {
-    "start": "node build/server.js",
-    "postinstall": "tsc",
+    "start": "node ./build/server.js",
     "server": "nodemon backend/server.ts",
     "frontend": "npm start --prefix frontend",
     "dev": "concurrently \"npm run server\" \"npm run frontend\"",
-    "build": "tsc -p .",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix frontend && npm run build --prefix frontend"
+    "heroku-postbuild": "tsc npm install --prefix frontend && npm run build --prefix frontend"
   },
+  "cacheDirectories": [
+    "node_modules",
+    "react-app/node_modules"
+  ],
   "keywords": [],
   "author": "Jay Thanki",
   "license": "ISC",
