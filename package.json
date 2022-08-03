@@ -3,14 +3,13 @@
   "version": "1.0.0",
   "description": "",
   "main": "server.ts",
-  "type": "module",
   "engines":{
     "node":"16.13.0"
  },
   "scripts": {
-    "start": "node ./build/server.js",
+    "start": "ts-node ./build/server.js",
     "postinstall": "tsc",
-    "server": "nodemon backend/server.ts",
+    "server": "node backend/server.ts",
     "frontend": "npm start --prefix frontend",
     "dev": "concurrently \"npm run server\" \"npm run frontend\"",
     "build": "tsc -p .",
