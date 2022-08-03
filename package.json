@@ -8,10 +8,12 @@
  },
   "scripts": {
     "start": "node ./build/server.js",
+    "postinstall": "tsc",
     "server": "nodemon backend/server.ts",
     "frontend": "npm start --prefix frontend",
     "dev": "concurrently \"npm run server\" \"npm run frontend\"",
-    "heroku-postbuild": "tsc & cd react-app/ && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
+    "build": "tsc -p .",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix frontend && npm run build --prefix frontend"
   },
   "cacheDirectories": [
     "node_modules",
