@@ -2,7 +2,7 @@ import express, { Express, Request, Response } from "express";
 import dotenv from 'dotenv';
 import colors from 'colors';
 import cors from 'cors';
-import { connectDB } from './config/db';
+import { connectDB } from './config/db.js';
 import { router as auth } from './routes/auth';
 import { errorHandler } from './middleware/errorMiddleware';
 import { router as read } from './routes/books';
