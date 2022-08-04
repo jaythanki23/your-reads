@@ -1,5 +1,5 @@
 import jwt, { Secret } from 'jsonwebtoken';
-import User from '../models/User';
+import User from '../models/User.js';
 import { Request, Response } from 'express';
 
 // @desc  Auth user

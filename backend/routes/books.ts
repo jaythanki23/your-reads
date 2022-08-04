@@ -1,7 +1,7 @@
 import express from "express";
-import protect from "../middleware/authMiddleware";
-import { createRead, getRead, removeBook, updateBook } from "../controller/books";
-import { createJourney, getJourney, deleteJourney, updateJourney } from "../controller/journey";
+import protect from "../middleware/authMiddleware.js";
+import { createRead, getRead, removeBook, updateBook } from "../controller/books.js";
+import { createJourney, getJourney, deleteJourney, updateJourney } from "../controller/journey.js";
 
 const router = express.Router();
 
