@@ -1,5 +1,5 @@
 import { Response } from "express";
-import Book from "../models/Book";
+import Book from "../models/Book.js";
 
 // @desc    Get all the books with the queried status
 // @route   /books/read

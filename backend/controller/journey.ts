@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import Journey from "../models/Journey";
+import Journey from "../models/Journey.js";
 
 // @desc    Get a journey - GET
 // @route   /books/journey
