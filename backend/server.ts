@@ -31,8 +31,8 @@ app.use('/books', read);
 // Serve frontend
 if(process.env.NODE_ENV === 'production') {
   // Set static folder
-  // const __dirname = dirname(fileURLToPath(import.meta.url));
-  app.use(express.static(path.join(__dirname, '../client/build')));
+  const __dirname = dirname(fileURLToPath(import.meta.url));
+  app.use(express.static(path.join(__dirname, '../frontend/build')));
 
   app.get('*', (req, res) => res.sendFile(path.resolve(__dirname, '../', 'your-reads', 'frontend', 'build', 'index.html')));
 }
